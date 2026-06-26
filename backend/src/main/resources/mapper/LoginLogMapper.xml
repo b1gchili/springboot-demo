@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.LoginLogMapper">
+
+    <insert id="insertLoginLog" parameterType="org.example.student.model.LoginLogRecord">
+        INSERT INTO login_log (user_id, username, display_name, phone, login_ip, login_time)
+        VALUES (#{userId}, #{username}, #{displayName}, #{phone}, #{loginIp}, NOW())
+    </insert>
+
+    <select id="listLoginLogs" resultType="org.example.student.model.LoginLogItem">
+        SELECT username, display_name, phone, login_ip, login_time
+        FROM login_log
+        ORDER BY login_time DESC, id DESC
+    </select>
+</mapper>

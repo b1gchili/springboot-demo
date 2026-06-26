@@ -17,6 +17,14 @@
         <i class="el-icon-edit"></i>
         <span slot="title">学生信息存储</span>
       </el-menu-item>
+      <el-menu-item index="/users">
+        <i class="el-icon-user"></i>
+        <span slot="title">用户列表</span>
+      </el-menu-item>
+      <el-menu-item index="/login-logs">
+        <i class="el-icon-document"></i>
+        <span slot="title">登录日志</span>
+      </el-menu-item>
       <el-menu-item index="/login" @click="logout">
         <i class="el-icon-switch-button"></i>
         <span slot="title">退出登录</span>

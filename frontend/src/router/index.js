@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
 import StudentQuery from '@/views/StudentQuery.vue'
 import StudentForm from '@/views/StudentForm.vue'
+import UserList from '@/views/UserList.vue'
+import LoginLogList from '@/views/LoginLogList.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,18 @@ const routes = [
     name: 'StudentFormEdit',
     component: StudentForm,
     meta: { title: '学生信息存储', requiresAuth: true }
+  },
+  {
+    path: '/users',
+    name: 'UserList',
+    component: UserList,
+    meta: { title: '用户列表', requiresAuth: true }
+  },
+  {
+    path: '/login-logs',
+    name: 'LoginLogList',
+    component: LoginLogList,
+    meta: { title: '登录日志列表', requiresAuth: true }
   }
 ]
 

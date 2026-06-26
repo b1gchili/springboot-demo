@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.StudentMapper">
+
+    <sql id="StudentColumns">
+        student_id, name, age, gender, description, create_time, update_time
+    </sql>
+
+    <sql id="StudentWhere">
+        <where>
+            <if test="request.studentId != null and request.studentId != ''">
+                AND student_id = #{request.studentId}
+            </if>
+            <if test="request.name != null and request.name != ''">
+                AND name LIKE CONCAT('%', #{request.name}, '%')
+            </if>
+            <if test="request.age != null">
+                AND age = #{request.age}
+            </if>
+            <if test="request.gender != null and request.gender != ''">
+                AND gender = #{request.gender}
+            </if>
+        </where>
+    </sql>
+
+    <select id="countStudents" resultType="long">
+        SELECT COUNT(*)
+        FROM student
+        <include refid="StudentWhere"/>
+    </select>
+
+    <select id="queryStudents" resultType="org.example.student.model.Student">
+        SELECT <include refid="StudentColumns"/>
+        FROM student
+        <include refid="StudentWhere"/>
+        ORDER BY update_time DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="findByStudentId" resultType="org.example.student.model.Student">
+        SELECT <include refid="StudentColumns"/>
+        FROM student
+        WHERE student_id = #{studentId}
+    </select>
+
+    <insert id="insertStudent" parameterType="org.example.student.model.Student">
+        INSERT INTO student (student_id, name, age, gender, description, create_time, update_time)
+        VALUES (#{studentId}, #{name}, #{age}, #{gender}, #{description}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="updateStudent" parameterType="org.example.student.model.Student">
+        UPDATE student
+        SET name = #{name},
+            age = #{age},
+            gender = #{gender},
+            description = #{description},
+            update_time = #{updateTime}
+        WHERE student_id = #{studentId}
+    </update>
+
+    <delete id="deleteByStudentId">
+        DELETE FROM student WHERE student_id = #{studentId}
+    </delete>
+</mapper>
