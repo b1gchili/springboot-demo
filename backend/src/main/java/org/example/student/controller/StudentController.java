@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 // 学生控制器
 @RestController
 @RequestMapping("/api/students")
@@ -45,7 +47,7 @@ public class StudentController {
      * 新增学生
      */
     @PostMapping
-    public Result<String> addStudent(@RequestBody Student student) {
+    public Result<String> addStudent(@RequestBody @Valid Student student) {
         String studentId = studentService.addStudent(student);
         return Result.success(studentId);
     }
@@ -54,7 +56,7 @@ public class StudentController {
      * 更新学生信息
      */
     @PutMapping("/{studentId}")
-    public Result<Void> updateStudent(@PathVariable String studentId, @RequestBody Student student) {
+    public Result<Void> updateStudent(@PathVariable String studentId, @RequestBody @Valid Student student) {
         studentService.updateStudent(studentId, student);
         return Result.success();
     }

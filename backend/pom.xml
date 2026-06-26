@@ -26,6 +26,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Validation：JSR-303/Bean Validation 参数校验 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
         <!-- MyBatis：使用 Mapper 接口和 XML 访问 MySQL -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

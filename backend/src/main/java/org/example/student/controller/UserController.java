@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
 
 @RestController
 @RequestMapping("/api/users")
@@ -31,12 +32,13 @@ public class UserController {
     }
 
     @PostMapping
-    public Result<String> addUser(@RequestBody UserRequest request) {
+    public Result<String> addUser(@RequestBody @Validated(UserRequest.Create.class) UserRequest request) {
         return Result.success(userService.addUser(request));
     }
 
     @PutMapping("/{userId}")
-    public Result<Void> updateUser(@PathVariable String userId, @RequestBody UserRequest request) {
+    public Result<Void> updateUser(@PathVariable String userId,
+                                   @RequestBody @Validated(UserRequest.Update.class) UserRequest request) {
         userService.updateUser(userId, request);
         return Result.success();
     }

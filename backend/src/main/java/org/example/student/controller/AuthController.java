@@ -8,12 +8,14 @@ import org.example.student.model.SmsCodeResponse;
 import org.example.student.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * 登录认证接口。
@@ -26,20 +28,20 @@ public class AuthController {
 
     /** 账号密码登录：校验账号密码，成功后返回 JWT。 */
     @PostMapping("/login/password")
-    public Result<LoginResponse> loginByPassword(@RequestBody LoginRequest request,
+    public Result<LoginResponse> loginByPassword(@RequestBody @Validated(LoginRequest.PasswordLogin.class) LoginRequest request,
                                                  HttpServletRequest httpRequest) {
         return Result.success(authService.loginByPassword(request, getClientIp(httpRequest)));
     }
 
     /** 获取手机验证码：验证码有效时间为 60 秒。 */
     @PostMapping("/sms/code")
-    public Result<SmsCodeResponse> sendSmsCode(@RequestBody SmsCodeRequest request) {
+    public Result<SmsCodeResponse> sendSmsCode(@RequestBody @Valid SmsCodeRequest request) {
         return Result.success(authService.sendSmsCode(request.getPhone()));
     }
 
     /** 手机验证码登录：校验手机号和验证码，成功后返回 JWT。 */
     @PostMapping("/login/sms")
-    public Result<LoginResponse> loginBySms(@RequestBody LoginRequest request,
+    public Result<LoginResponse> loginBySms(@RequestBody @Validated(LoginRequest.SmsLogin.class) LoginRequest request,
                                             HttpServletRequest httpRequest) {
         return Result.success(authService.loginBySms(request, getClientIp(httpRequest)));
     }

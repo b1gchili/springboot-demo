@@ -1,21 +1,26 @@
 package org.example.student.exception;
 
-import org.example.student.model.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.example.student.model.Result;
+import org.springframework.dao.DataAccessException;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-// 全局异常处理类（Spring 自动管理，使用时无需注入）
-/*
-组合 @ControllerAdvice 和 @ResponseBody，用来拦截所有 Controller 抛出的异常 ，统一处理并返回响应
+import javax.validation.ConstraintViolationException;
+
+/**
+ * 全局异常处理。
+ *
+ * Controller 和 Service 抛出的异常会在这里统一转换为 Result，保证前端拿到稳定响应格式。
  */
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
-     * 处理业务异常
+     * 处理业务异常。
      */
     @ExceptionHandler(BusinessException.class)
     public Result<Void> handleBusinessException(BusinessException e) {
@@ -24,20 +29,56 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 处理参数校验异常
+     * 处理 @RequestBody 参数校验异常。
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Result<Void> handleValidException(MethodArgumentNotValidException e) {
+    public Result<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         String message = e.getBindingResult().getFieldErrors().stream()
                 .map(error -> error.getField() + ": " + error.getDefaultMessage())
                 .findFirst()
                 .orElse("参数校验失败");
-        log.warn("参数校验异常: {}", message);
+        log.warn("请求体参数校验失败: {}", message);
         return Result.error(400, message);
     }
 
     /**
-     * 处理其他异常
+     * 处理表单/query 参数绑定校验异常。
+     */
+    @ExceptionHandler(BindException.class)
+    public Result<Void> handleBindException(BindException e) {
+        String message = e.getBindingResult().getFieldErrors().stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .findFirst()
+                .orElse("参数校验失败");
+        log.warn("请求参数校验失败: {}", message);
+        return Result.error(400, message);
+    }
+
+    /**
+     * 处理 @RequestParam、@PathVariable 等约束校验异常。
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Result<Void> handleConstraintViolationException(ConstraintViolationException e) {
+        String message = e.getConstraintViolations().stream()
+                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
+                .findFirst()
+                .orElse("参数校验失败");
+        log.warn("参数约束校验失败: {}", message);
+        return Result.error(400, message);
+    }
+
+    /**
+     * 处理数据库异常，并转换为业务友好的异常响应。
+     */
+    @ExceptionHandler(DataAccessException.class)
+    public Result<Void> handleDataAccessException(DataAccessException e) {
+        log.error("数据库访问异常", e);
+        BusinessException businessException = new BusinessException(500, "数据库操作失败，请稍后再试");
+        return Result.error(businessException.getCode(), businessException.getMessage());
+    }
+
+    /**
+     * 兜底处理其他未知异常。
      */
     @ExceptionHandler(Exception.class)
     public Result<Void> handleException(Exception e) {

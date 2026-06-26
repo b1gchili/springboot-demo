@@ -1,18 +1,32 @@
 package org.example.student.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 /**
  * 登录请求参数。
- *
- * 账号密码登录使用 username/password，手机验证码登录使用 phone/code。
  */
 public class LoginRequest {
+    public interface PasswordLogin {}
+
+    public interface SmsLogin {}
+
     /** 登录账号。 */
+    @NotBlank(message = "账号不能为空", groups = PasswordLogin.class)
     private String username;
+
     /** 登录密码。 */
+    @NotBlank(message = "密码不能为空", groups = PasswordLogin.class)
     private String password;
+
     /** 手机号。 */
+    @NotBlank(message = "手机号不能为空", groups = SmsLogin.class)
+    @Pattern(regexp = "^1\\d{10}$", message = "手机号格式错误", groups = SmsLogin.class)
     private String phone;
+
     /** 短信验证码。 */
+    @NotBlank(message = "验证码不能为空", groups = SmsLogin.class)
+    @Pattern(regexp = "^\\d{6}$", message = "验证码必须为6位数字", groups = SmsLogin.class)
     private String code;
 
     public String getUsername() {

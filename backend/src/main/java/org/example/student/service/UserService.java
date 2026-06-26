@@ -8,6 +8,7 @@ import org.example.student.model.PageResult;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRecord;
 import org.example.student.model.UserRequest;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -44,7 +45,11 @@ public class UserService {
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
         user.setDisplayName(request.getDisplayName());
-        userMapper.insertUser(user);
+        try {
+            userMapper.insertUser(user);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "新增用户失败，请稍后再试");
+        }
         return user.getUserId();
     }
 
@@ -67,7 +72,12 @@ public class UserService {
         user.setPhone(request.getPhone());
         user.setDisplayName(request.getDisplayName());
 
-        int rows = userMapper.updateUser(user);
+        int rows;
+        try {
+            rows = userMapper.updateUser(user);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "修改用户失败，请稍后再试");
+        }
         if (rows == 0) {
             throw new BusinessException(404, "用户不存在");
         }
@@ -79,7 +89,12 @@ public class UserService {
      * 这里使用软删除，把 enabled 设置为 0。
      */
     public void deleteUser(String userId) {
-        int rows = userMapper.disableUser(userId);
+        int rows;
+        try {
+            rows = userMapper.disableUser(userId);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "删除用户失败，请稍后再试");
+        }
         if (rows == 0) {
             throw new BusinessException(404, "用户不存在");
         }

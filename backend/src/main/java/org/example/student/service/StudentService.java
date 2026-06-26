@@ -9,6 +9,7 @@ import org.example.student.model.Student;
 import org.example.student.model.StudentQueryRequest;
 import org.example.student.util.StudentIdGenerator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -61,7 +62,11 @@ public class StudentService {
         student.setStudentId(studentId);
         student.setCreateTime(now);
         student.setUpdateTime(now);
-        studentMapper.insertStudent(student);
+        try {
+            studentMapper.insertStudent(student);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "新增学生失败，请稍后再试");
+        }
         log.info("新增学生: studentId={}, name={}", studentId, student.getName());
         return studentId;
     }
@@ -73,7 +78,12 @@ public class StudentService {
         validateStudent(student);
         student.setStudentId(studentId);
         student.setUpdateTime(new Date());
-        int rows = studentMapper.updateStudent(student);
+        int rows;
+        try {
+            rows = studentMapper.updateStudent(student);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "更新学生失败，请稍后再试");
+        }
         if (rows == 0) {
             throw new BusinessException(404, "学生不存在: " + studentId);
         }
@@ -84,7 +94,12 @@ public class StudentService {
      * 删除学生。
      */
     public void deleteStudent(String studentId) {
-        int rows = studentMapper.deleteByStudentId(studentId);
+        int rows;
+        try {
+            rows = studentMapper.deleteByStudentId(studentId);
+        } catch (DataAccessException e) {
+            throw new BusinessException(500, "删除学生失败，请稍后再试");
+        }
         if (rows == 0) {
             throw new BusinessException(404, "学生不存在: " + studentId);
         }
