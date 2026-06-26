@@ -22,6 +22,18 @@
       </el-table-column>
     </el-table>
 
+    <el-pagination
+      class="pagination"
+      background
+      layout="total, sizes, prev, pager, next, jumper"
+      :current-page="pageNum"
+      :page-size="pageSize"
+      :page-sizes="[10, 20, 50]"
+      :total="total"
+      @current-change="handlePageChange"
+      @size-change="handleSizeChange"
+    />
+
     <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" width="460px" @closed="resetForm">
       <el-form ref="userForm" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="账号" prop="username">
@@ -68,6 +80,9 @@ export default {
       loading: false,
       saving: false,
       users: [],
+      total: 0,
+      pageNum: 1,
+      pageSize: 10,
       dialogVisible: false,
       isEdit: false,
       currentUserId: '',
@@ -110,13 +125,27 @@ export default {
   methods: {
     fetchUsers() {
       this.loading = true
-      listUsers()
+      listUsers({
+        pageNum: this.pageNum,
+        pageSize: this.pageSize
+      })
         .then(res => {
-          this.users = res.data || []
+          const page = res.data || {}
+          this.users = page.list || []
+          this.total = page.total || 0
         })
         .finally(() => {
           this.loading = false
         })
+    },
+    handlePageChange(page) {
+      this.pageNum = page
+      this.fetchUsers()
+    },
+    handleSizeChange(size) {
+      this.pageSize = size
+      this.pageNum = 1
+      this.fetchUsers()
     },
     openAddDialog() {
       this.isEdit = false
@@ -198,6 +227,11 @@ export default {
 
 .user-table {
   width: 100%;
+}
+
+.pagination {
+  margin-top: 16px;
+  text-align: right;
 }
 
 .danger-action {

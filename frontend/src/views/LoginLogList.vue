@@ -11,6 +11,18 @@
       <el-table-column prop="loginIp" label="登录IP" min-width="160" />
       <el-table-column prop="loginTime" label="登录时间" min-width="180" />
     </el-table>
+
+    <el-pagination
+      class="pagination"
+      background
+      layout="total, sizes, prev, pager, next, jumper"
+      :current-page="pageNum"
+      :page-size="pageSize"
+      :page-sizes="[10, 20, 50]"
+      :total="total"
+      @current-change="handlePageChange"
+      @size-change="handleSizeChange"
+    />
   </div>
 </template>
 
@@ -22,7 +34,10 @@ export default {
   data() {
     return {
       loading: false,
-      logs: []
+      logs: [],
+      total: 0,
+      pageNum: 1,
+      pageSize: 10
     }
   },
   created() {
@@ -31,13 +46,27 @@ export default {
   methods: {
     fetchLogs() {
       this.loading = true
-      listLoginLogs()
+      listLoginLogs({
+        pageNum: this.pageNum,
+        pageSize: this.pageSize
+      })
         .then(res => {
-          this.logs = res.data || []
+          const page = res.data || {}
+          this.logs = page.list || []
+          this.total = page.total || 0
         })
         .finally(() => {
           this.loading = false
         })
+    },
+    handlePageChange(page) {
+      this.pageNum = page
+      this.fetchLogs()
+    },
+    handleSizeChange(size) {
+      this.pageSize = size
+      this.pageNum = 1
+      this.fetchLogs()
     }
   }
 }
@@ -60,5 +89,10 @@ export default {
 
 .login-log-table {
   width: 100%;
+}
+
+.pagination {
+  margin-top: 16px;
+  text-align: right;
 }
 </style>

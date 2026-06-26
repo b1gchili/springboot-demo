@@ -1,23 +1,23 @@
 package org.example.student.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.example.student.exception.BusinessException;
 import org.example.student.mapper.StudentMapper;
 import org.example.student.model.PageResult;
 import org.example.student.model.Student;
 import org.example.student.model.StudentQueryRequest;
 import org.example.student.util.StudentIdGenerator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 public class StudentService {
-
-    private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentMapper studentMapper;
 
@@ -26,18 +26,18 @@ public class StudentService {
     }
 
     /**
-     * 使用 MyBatis 从 MySQL 分页查询学生列表。
+     * 使用 MyBatis + PageHelper 从 MySQL 分页查询学生列表。
      */
     public PageResult<Student> queryStudents(StudentQueryRequest request) {
         int pageNum = request.getPageNum() == null || request.getPageNum() < 1 ? 1 : request.getPageNum();
         int pageSize = request.getPageSize() == null || request.getPageSize() < 1 ? 10 : request.getPageSize();
-        int offset = (pageNum - 1) * pageSize;
 
-        long total = studentMapper.countStudents(request);
-        List<Student> list = studentMapper.queryStudents(request, pageSize, offset);
+        PageHelper.startPage(pageNum, pageSize);
+        List<Student> list = studentMapper.queryStudents(request);
+        PageInfo<Student> pageInfo = new PageInfo<>(list);
 
-        logger.info("查询学生列表: 条件={}, 总数={}, 当前页={}", request, total, pageNum);
-        return new PageResult<>(list, total, pageNum, pageSize);
+        log.info("查询学生列表: 条件={}, 总数={}, 当前页={}", request, pageInfo.getTotal(), pageNum);
+        return new PageResult<>(pageInfo.getList(), pageInfo.getTotal(), pageNum, pageSize);
     }
 
     /**
@@ -62,7 +62,7 @@ public class StudentService {
         student.setCreateTime(now);
         student.setUpdateTime(now);
         studentMapper.insertStudent(student);
-        logger.info("新增学生: studentId={}, name={}", studentId, student.getName());
+        log.info("新增学生: studentId={}, name={}", studentId, student.getName());
         return studentId;
     }
 
@@ -77,7 +77,7 @@ public class StudentService {
         if (rows == 0) {
             throw new BusinessException(404, "学生不存在: " + studentId);
         }
-        logger.info("更新学生: studentId={}", studentId);
+        log.info("更新学生: studentId={}", studentId);
     }
 
     /**
@@ -88,7 +88,7 @@ public class StudentService {
         if (rows == 0) {
             throw new BusinessException(404, "学生不存在: " + studentId);
         }
-        logger.info("删除学生: studentId={}", studentId);
+        log.info("删除学生: studentId={}", studentId);
     }
 
     /**

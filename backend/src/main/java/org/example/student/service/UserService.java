@@ -1,7 +1,10 @@
 package org.example.student.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.example.student.exception.BusinessException;
 import org.example.student.mapper.UserMapper;
+import org.example.student.model.PageResult;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRecord;
 import org.example.student.model.UserRequest;
@@ -19,8 +22,13 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public List<UserListItem> listUsers() {
-        return userMapper.listUsers();
+    public PageResult<UserListItem> listUsers(Integer pageNum, Integer pageSize) {
+        int currentPage = pageNum == null || pageNum < 1 ? 1 : pageNum;
+        int currentSize = pageSize == null || pageSize < 1 ? 10 : pageSize;
+        PageHelper.startPage(currentPage, currentSize);
+        List<UserListItem> list = userMapper.listUsers();
+        PageInfo<UserListItem> pageInfo = new PageInfo<>(list);
+        return new PageResult<>(pageInfo.getList(), pageInfo.getTotal(), currentPage, currentSize);
     }
 
     /**

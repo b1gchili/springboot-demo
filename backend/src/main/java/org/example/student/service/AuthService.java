@@ -9,8 +9,7 @@ import org.example.student.model.SmsCodeResponse;
 import org.example.student.model.UserInfo;
 import org.example.student.model.UserRecord;
 import org.example.student.util.JwtUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -23,9 +22,9 @@ import java.util.Date;
  * 用户和短信验证码都通过 MyBatis 访问 MySQL。
  * 当前项目不接入真实短信服务，验证码会输出到后端控制台日志。
  */
+@Slf4j
 @Service
 public class AuthService {
-    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     /** 验证码有效期：60 秒。 */
     private static final long SMS_CODE_TTL_MILLIS = 60 * 1000L;
@@ -81,7 +80,7 @@ public class AuthService {
         Date expiresAt = new Date(System.currentTimeMillis() + SMS_CODE_TTL_MILLIS);
         authMapper.insertSmsCode(phone, code, expiresAt);
 
-        logger.info("手机验证码已生成: phone={}, code={}, expiresIn={}s", phone, code, 60);
+        log.info("手机验证码已生成: phone={}, code={}, expiresIn={}s", phone, code, 60);
         return new SmsCodeResponse(phone, 60L);
     }
 

@@ -9,11 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface StudentMapper {
-    long countStudents(@Param("request") StudentQueryRequest request);
-
-    List<Student> queryStudents(@Param("request") StudentQueryRequest request,
-                                @Param("limit") int limit,
-                                @Param("offset") int offset);
+    List<Student> queryStudents(@Param("request") StudentQueryRequest request);
 
     Student findByStudentId(@Param("studentId") String studentId);
 

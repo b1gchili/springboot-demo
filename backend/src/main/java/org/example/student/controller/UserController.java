@@ -1,6 +1,7 @@
 package org.example.student.controller;
 
 import org.example.student.model.Result;
+import org.example.student.model.PageResult;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRequest;
 import org.example.student.service.UserService;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -25,8 +25,9 @@ public class UserController {
     }
 
     @GetMapping
-    public Result<List<UserListItem>> listUsers() {
-        return Result.success(userService.listUsers());
+    public Result<PageResult<UserListItem>> listUsers(@RequestParam(required = false) Integer pageNum,
+                                                      @RequestParam(required = false) Integer pageSize) {
+        return Result.success(userService.listUsers(pageNum, pageSize));
     }
 
     @PostMapping
