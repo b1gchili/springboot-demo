@@ -32,28 +32,4 @@
         ORDER BY update_time DESC
     </select>
 
-    <select id="findByStudentId" resultType="org.example.student.model.Student">
-        SELECT <include refid="StudentColumns"/>
-        FROM student
-        WHERE student_id = #{studentId}
-    </select>
-
-    <insert id="insertStudent" parameterType="org.example.student.model.Student">
-        INSERT INTO student (student_id, name, age, gender, description, create_time, update_time)
-        VALUES (#{studentId}, #{name}, #{age}, #{gender}, #{description}, #{createTime}, #{updateTime})
-    </insert>
-
-    <update id="updateStudent" parameterType="org.example.student.model.Student">
-        UPDATE student
-        SET name = #{name},
-            age = #{age},
-            gender = #{gender},
-            description = #{description},
-            update_time = #{updateTime}
-        WHERE student_id = #{studentId}
-    </update>
-
-    <delete id="deleteByStudentId">
-        DELETE FROM student WHERE student_id = #{studentId}
-    </delete>
 </mapper>

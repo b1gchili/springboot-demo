@@ -1,6 +1,10 @@
 package org.example.student.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -13,9 +17,15 @@ import java.util.Date;
 /**
  * 学生实体类。
  */
+@TableName("student")
 public class Student {
 
+    /** 数据库主键。 */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
     /** 学号。 */
+    @TableField("student_id")
     private String studentId;
 
     /** 姓名。 */
@@ -39,14 +49,19 @@ public class Student {
     private String description;
 
     /** 创建时间。 */
+    @TableField("create_time")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /** 更新时间。 */
+    @TableField("update_time")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public Student() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getStudentId() { return studentId; }
     public void setStudentId(String studentId) { this.studentId = studentId; }

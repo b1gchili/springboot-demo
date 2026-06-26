@@ -1,14 +1,16 @@
 package org.example.student.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.example.student.exception.BusinessException;
 import org.example.student.mapper.StudentMapper;
 import org.example.student.model.PageResult;
 import org.example.student.model.Student;
 import org.example.student.model.StudentQueryRequest;
 import org.example.student.util.StudentIdGenerator;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -27,7 +29,7 @@ public class StudentService {
     }
 
     /**
-     * 使用 MyBatis + PageHelper 从 MySQL 分页查询学生列表。
+     * 复杂查询保留 MyBatis XML，分页使用 PageHelper。
      */
     public PageResult<Student> queryStudents(StudentQueryRequest request) {
         int pageNum = request.getPageNum() == null || request.getPageNum() < 1 ? 1 : request.getPageNum();
@@ -42,10 +44,11 @@ public class StudentService {
     }
 
     /**
-     * 根据学号查询学生详情。
+     * 简单查询使用 MyBatis-Plus Wrapper。
      */
     public Student getStudent(String studentId) {
-        Student student = studentMapper.findByStudentId(studentId);
+        Student student = studentMapper.selectOne(new LambdaQueryWrapper<Student>()
+                .eq(Student::getStudentId, studentId));
         if (student == null) {
             throw new BusinessException(404, "学生不存在: " + studentId);
         }
@@ -53,7 +56,7 @@ public class StudentService {
     }
 
     /**
-     * 新增学生。
+     * 新增学生使用 MyBatis-Plus insert。
      */
     public String addStudent(Student student) {
         validateStudent(student);
@@ -63,7 +66,7 @@ public class StudentService {
         student.setCreateTime(now);
         student.setUpdateTime(now);
         try {
-            studentMapper.insertStudent(student);
+            studentMapper.insert(student);
         } catch (DataAccessException e) {
             throw new BusinessException(500, "新增学生失败，请稍后再试");
         }
@@ -72,15 +75,20 @@ public class StudentService {
     }
 
     /**
-     * 更新学生信息。
+     * 更新学生使用 MyBatis-Plus update + Wrapper。
      */
     public void updateStudent(String studentId, Student student) {
         validateStudent(student);
-        student.setStudentId(studentId);
-        student.setUpdateTime(new Date());
+        Date now = new Date();
         int rows;
         try {
-            rows = studentMapper.updateStudent(student);
+            rows = studentMapper.update(null, new LambdaUpdateWrapper<Student>()
+                    .eq(Student::getStudentId, studentId)
+                    .set(Student::getName, student.getName())
+                    .set(Student::getAge, student.getAge())
+                    .set(Student::getGender, student.getGender())
+                    .set(Student::getDescription, student.getDescription())
+                    .set(Student::getUpdateTime, now));
         } catch (DataAccessException e) {
             throw new BusinessException(500, "更新学生失败，请稍后再试");
         }
@@ -91,12 +99,13 @@ public class StudentService {
     }
 
     /**
-     * 删除学生。
+     * 删除学生使用 MyBatis-Plus delete + Wrapper。
      */
     public void deleteStudent(String studentId) {
         int rows;
         try {
-            rows = studentMapper.deleteByStudentId(studentId);
+            rows = studentMapper.delete(new LambdaQueryWrapper<Student>()
+                    .eq(Student::getStudentId, studentId));
         } catch (DataAccessException e) {
             throw new BusinessException(500, "删除学生失败，请稍后再试");
         }
@@ -106,9 +115,6 @@ public class StudentService {
         log.info("删除学生: studentId={}", studentId);
     }
 
-    /**
-     * 校验学生信息。
-     */
     private void validateStudent(Student student) {
         if (!StringUtils.hasText(student.getName())) {
             throw new BusinessException(400, "学生姓名不能为空");

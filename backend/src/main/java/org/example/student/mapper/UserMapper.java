@@ -1,25 +1,13 @@
 package org.example.student.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRecord;
 
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<UserRecord> {
     List<UserListItem> listUsers();
-
-    UserRecord findByUserId(@Param("userId") String userId);
-
-    int countByUsername(@Param("username") String username, @Param("excludeUserId") String excludeUserId);
-
-    int countByPhone(@Param("phone") String phone, @Param("excludeUserId") String excludeUserId);
-
-    int insertUser(UserRecord user);
-
-    int updateUser(UserRecord user);
-
-    int disableUser(@Param("userId") String userId);
 }

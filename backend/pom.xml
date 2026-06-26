@@ -34,9 +34,9 @@
 
         <!-- MyBatis：使用 Mapper 接口和 XML 访问 MySQL -->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.2</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.5</version>
         </dependency>
 
         <!-- PageHelper 分页插件 -->
