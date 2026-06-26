@@ -1,5 +1,6 @@
 package org.example.student.service;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.github.pagehelper.PageHelper;
@@ -7,6 +8,7 @@ import com.github.pagehelper.PageInfo;
 import org.example.student.exception.BusinessException;
 import org.example.student.mapper.UserMapper;
 import org.example.student.model.PageResult;
+import org.example.student.model.UserExportRow;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRecord;
 import org.example.student.model.UserRequest;
@@ -14,8 +16,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -38,6 +44,27 @@ public class UserService {
     }
 
     /**
+     * 使用 EasyExcel 导出用户列表。
+     */
+    public void exportUsers(HttpServletResponse response) {
+        List<UserExportRow> rows = userMapper.listUsers().stream()
+                .map(UserExportRow::from)
+                .collect(Collectors.toList());
+        try {
+            String fileName = URLEncoder.encode("用户列表.xlsx", "UTF-8").replaceAll("\\+", "%20");
+            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename*=UTF-8''" + fileName);
+            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+            EasyExcel.write(response.getOutputStream(), UserExportRow.class)
+                    .sheet("用户列表")
+                    .doWrite(rows);
+        } catch (IOException e) {
+            throw new BusinessException(500, "导出用户列表失败");
+        }
+    }
+
+    /**
      * 新增用户使用 MyBatis-Plus insert。
      */
     public String addUser(UserRequest request) {
@@ -50,6 +77,8 @@ public class UserService {
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
         user.setDisplayName(request.getDisplayName());
+        user.setAvatarUrl(request.getAvatarUrl());
+        user.setLoginCount(0L);
         user.setEnabled(1);
         try {
             userMapper.insert(user);
@@ -76,7 +105,8 @@ public class UserService {
                 .eq(UserRecord::getEnabled, 1)
                 .set(UserRecord::getUsername, request.getUsername())
                 .set(UserRecord::getPhone, request.getPhone())
-                .set(UserRecord::getDisplayName, request.getDisplayName());
+                .set(UserRecord::getDisplayName, request.getDisplayName())
+                .set(UserRecord::getAvatarUrl, request.getAvatarUrl());
         if (StringUtils.hasText(request.getPassword())) {
             updateWrapper.set(UserRecord::getPassword, request.getPassword());
         }
@@ -140,6 +170,9 @@ public class UserService {
         }
         if (StringUtils.hasText(request.getPassword()) && request.getPassword().length() > 100) {
             throw new BusinessException(400, "密码不能超过100个字符");
+        }
+        if (StringUtils.hasText(request.getAvatarUrl()) && request.getAvatarUrl().length() > 500) {
+            throw new BusinessException(400, "头像地址不能超过500个字符");
         }
     }
 

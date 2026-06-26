@@ -16,6 +16,9 @@ public class UserListItem {
     private String displayName;
     /** 手机号。 */
     private String phone;
+    private String avatarUrl;
+    /** 登录次数。 */
+    private Long loginCount;
     /** 最后登录时间。 */
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
@@ -50,6 +53,22 @@ public class UserListItem {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public Long getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Long loginCount) {
+        this.loginCount = loginCount;
     }
 
     public Date getLastLoginTime() {

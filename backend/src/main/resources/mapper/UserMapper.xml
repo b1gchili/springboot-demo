@@ -5,10 +5,20 @@
 <mapper namespace="org.example.student.mapper.UserMapper">
 
     <select id="listUsers" resultType="org.example.student.model.UserListItem">
-        SELECT user_id, username, display_name, phone, last_login_time
+        SELECT user_id, username, display_name, phone, avatar_url, login_count, last_login_time
         FROM sys_user
         WHERE enabled = 1
         ORDER BY last_login_time DESC, id ASC
     </select>
+
+    <update id="refreshLoginCountStats">
+        UPDATE sys_user u
+        LEFT JOIN (
+            SELECT user_id, COUNT(*) AS login_count
+            FROM login_log
+            GROUP BY user_id
+        ) l ON u.user_id = l.user_id
+        SET u.login_count = IFNULL(l.login_count, 0)
+    </update>
 
 </mapper>

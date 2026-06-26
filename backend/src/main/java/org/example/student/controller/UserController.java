@@ -5,6 +5,7 @@ import org.example.student.model.PageResult;
 import org.example.student.model.UserListItem;
 import org.example.student.model.UserRequest;
 import org.example.student.service.UserService;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,11 @@ public class UserController {
     public Result<PageResult<UserListItem>> listUsers(@RequestParam(required = false) Integer pageNum,
                                                       @RequestParam(required = false) Integer pageSize) {
         return Result.success(userService.listUsers(pageNum, pageSize));
+    }
+
+    @GetMapping("/export")
+    public void exportUsers(HttpServletResponse response) {
+        userService.exportUsers(response);
     }
 
     @PostMapping

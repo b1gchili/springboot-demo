@@ -10,4 +10,6 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<UserRecord> {
     List<UserListItem> listUsers();
+
+    int refreshLoginCountStats();
 }

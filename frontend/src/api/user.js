@@ -8,6 +8,14 @@ export function listUsers(params) {
   })
 }
 
+export function exportUsers() {
+  return request({
+    url: '/users/export',
+    method: 'get',
+    responseType: 'blob'
+  })
+}
+
 export function addUser(data) {
   return request({
     url: '/users',

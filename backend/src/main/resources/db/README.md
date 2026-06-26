@@ -43,9 +43,28 @@ spring:
 - `sys_user.last_login_time` 保存最后登录时间。
 - 执行 `schema.sql` 会自动为已有 `sys_user` 表补充 `last_login_time` 字段和索引。
 - 账号密码登录、手机验证码登录成功后都会更新最后登录时间。
+- `sys_user.login_count` 保存登录次数统计结果。
+- 后端使用 `@Scheduled` 每分钟根据 `login_log` 重新统计一次所有用户的登录次数。
 
 登录日志说明：
 
 - `login_log` 保存登录日志。
 - 账号密码登录、手机验证码登录成功后都会写入一条日志。
 - 日志字段包括：账号、姓名、手机号、登录 IP、登录时间。
+
+头像上传说明：
+
+- `sys_user.avatar_url` 保存用户头像图片地址。
+- 执行 `schema.sql` 会自动为已有 `sys_user` 表补充 `avatar_url` 字段。
+- 头像上传接口为 `POST /api/files/avatar`，需要登录后携带 JWT。
+- 需要先配置阿里云 OSS 环境变量：
+
+```powershell
+$env:ALIYUN_OSS_ENDPOINT="https://oss-cn-hangzhou.aliyuncs.com"
+$env:ALIYUN_OSS_ACCESS_KEY_ID="你的AccessKeyId"
+$env:ALIYUN_OSS_ACCESS_KEY_SECRET="你的AccessKeySecret"
+$env:ALIYUN_OSS_BUCKET_NAME="你的Bucket名称"
+$env:ALIYUN_OSS_DIR="avatars/"
+# 如果使用自定义域名或 CDN，建议配置这个；不配置时后端会拼接 bucket + endpoint 作为访问地址。
+$env:ALIYUN_OSS_PUBLIC_URL_PREFIX="https://你的图片访问域名"
+```

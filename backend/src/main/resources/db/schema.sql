@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS sys_user (
   password VARCHAR(100) NOT NULL COMMENT '登录密码。演示项目暂存明文，生产环境必须存哈希',
   phone VARCHAR(20) NOT NULL UNIQUE COMMENT '手机号',
   display_name VARCHAR(50) NOT NULL COMMENT '展示名称',
+  avatar_url VARCHAR(500) NULL COMMENT '头像地址',
+  login_count BIGINT NOT NULL DEFAULT 0 COMMENT '登录次数',
   enabled TINYINT NOT NULL DEFAULT 1 COMMENT '是否启用：1启用，0禁用',
   last_login_time DATETIME NULL COMMENT '最后登录时间',
   create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -29,6 +31,38 @@ SET @column_exists = (
 SET @sql = IF(
   @column_exists = 0,
   'ALTER TABLE sys_user ADD COLUMN last_login_time DATETIME NULL COMMENT ''最后登录时间''',
+  'SELECT 1'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET @column_exists = (
+  SELECT COUNT(*)
+  FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_SCHEMA = DATABASE()
+    AND TABLE_NAME = 'sys_user'
+    AND COLUMN_NAME = 'login_count'
+);
+SET @sql = IF(
+  @column_exists = 0,
+  'ALTER TABLE sys_user ADD COLUMN login_count BIGINT NOT NULL DEFAULT 0 COMMENT ''登录次数'' AFTER avatar_url',
+  'SELECT 1'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET @column_exists = (
+  SELECT COUNT(*)
+  FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_SCHEMA = DATABASE()
+    AND TABLE_NAME = 'sys_user'
+    AND COLUMN_NAME = 'avatar_url'
+);
+SET @sql = IF(
+  @column_exists = 0,
+  'ALTER TABLE sys_user ADD COLUMN avatar_url VARCHAR(500) NULL COMMENT ''头像地址'' AFTER display_name',
   'SELECT 1'
 );
 PREPARE stmt FROM @sql;

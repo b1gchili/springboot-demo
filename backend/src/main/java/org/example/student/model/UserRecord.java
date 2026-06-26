@@ -27,6 +27,12 @@ public class UserRecord {
     @TableField("display_name")
     private String displayName;
 
+    @TableField("avatar_url")
+    private String avatarUrl;
+
+    @TableField("login_count")
+    private Long loginCount;
+
     private Integer enabled;
 
     @TableField("last_login_time")
@@ -82,6 +88,22 @@ public class UserRecord {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public Long getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Long loginCount) {
+        this.loginCount = loginCount;
     }
 
     public Integer getEnabled() {

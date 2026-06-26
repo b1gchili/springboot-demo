@@ -28,6 +28,9 @@ public class UserRequest {
     @Pattern(regexp = "^1\\d{10}$", message = "手机号格式错误", groups = {Create.class, Update.class})
     private String phone;
 
+    @Size(max = 500, message = "头像地址不能超过500个字符", groups = {Create.class, Update.class})
+    private String avatarUrl;
+
     /** 密码。新增时必填，修改时可选填。 */
     @NotBlank(message = "密码不能为空", groups = Create.class)
     @Size(max = 100, message = "密码不能超过100个字符", groups = {Create.class, Update.class})
@@ -55,6 +58,14 @@ public class UserRequest {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getPassword() {

@@ -46,6 +46,20 @@
             <version>1.4.7</version>
         </dependency>
 
+        <!-- EasyExcel: export Excel files -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>3.3.4</version>
+        </dependency>
+
+        <!-- Aliyun OSS SDK: upload avatar images -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.18.4</version>
+        </dependency>
+
         <!-- Lombok：用于 @Slf4j 等注解，减少样板代码 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
