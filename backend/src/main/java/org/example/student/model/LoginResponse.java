@@ -10,6 +10,10 @@ public class LoginResponse {
     private String tokenType;
     /** token 剩余有效秒数。 */
     private Long expiresIn;
+    /** refresh token 字符串，用于 access token 过期后无感知刷新。 */
+    private String refreshToken;
+    /** refresh token 剩余有效秒数。 */
+    private Long refreshExpiresIn;
     /** 当前登录用户的基础信息。 */
     private UserInfo user;
 
@@ -20,6 +24,15 @@ public class LoginResponse {
         this.token = token;
         this.tokenType = tokenType;
         this.expiresIn = expiresIn;
+        this.user = user;
+    }
+
+    public LoginResponse(String token, String tokenType, Long expiresIn, String refreshToken, Long refreshExpiresIn, UserInfo user) {
+        this.token = token;
+        this.tokenType = tokenType;
+        this.expiresIn = expiresIn;
+        this.refreshToken = refreshToken;
+        this.refreshExpiresIn = refreshExpiresIn;
         this.user = user;
     }
 
@@ -45,6 +58,22 @@ public class LoginResponse {
 
     public void setExpiresIn(Long expiresIn) {
         this.expiresIn = expiresIn;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public Long getRefreshExpiresIn() {
+        return refreshExpiresIn;
+    }
+
+    public void setRefreshExpiresIn(Long refreshExpiresIn) {
+        this.refreshExpiresIn = refreshExpiresIn;
     }
 
     public UserInfo getUser() {

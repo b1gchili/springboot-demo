@@ -2,6 +2,7 @@ package org.example.student.controller;
 
 import org.example.student.model.LoginRequest;
 import org.example.student.model.LoginResponse;
+import org.example.student.model.RefreshTokenRequest;
 import org.example.student.model.Result;
 import org.example.student.model.SmsCodeRequest;
 import org.example.student.model.SmsCodeResponse;
@@ -44,6 +45,12 @@ public class AuthController {
     public Result<LoginResponse> loginBySms(@RequestBody @Validated(LoginRequest.SmsLogin.class) LoginRequest request,
                                             HttpServletRequest httpRequest) {
         return Result.success(authService.loginBySms(request, getClientIp(httpRequest)));
+    }
+
+    /** 无感知刷新 token：refresh token 有效时返回新的 access token。 */
+    @PostMapping("/refresh")
+    public Result<LoginResponse> refreshToken(@RequestBody @Valid RefreshTokenRequest request) {
+        return Result.success(authService.refreshToken(request.getRefreshToken()));
     }
 
     /**

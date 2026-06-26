@@ -18,6 +18,13 @@
           AND enabled = 1
     </select>
 
+    <select id="findEnabledUserByUserId" resultType="org.example.student.model.UserRecord">
+        SELECT user_id, username, password, phone, display_name
+        FROM sys_user
+        WHERE user_id = #{userId}
+          AND enabled = 1
+    </select>
+
     <update id="updateLastLoginTime">
         UPDATE sys_user
         SET last_login_time = NOW()

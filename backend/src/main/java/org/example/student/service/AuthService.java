@@ -122,9 +122,40 @@ public class AuthService {
         return buildLoginResponse(user.toUserInfo());
     }
 
+    /**
+     * 使用 refresh token 刷新 access token。
+     */
+    public LoginResponse refreshToken(String refreshToken) {
+        String userId = JwtUtil.getUserIdFromRefreshToken(refreshToken);
+        UserRecord user = authMapper.findEnabledUserByUserId(userId);
+        if (user == null) {
+            throw new BusinessException(401, "用户不存在或已被禁用，请重新登录");
+        }
+        return buildRefreshResponse(user.toUserInfo(), refreshToken);
+    }
+
     /** 登录成功后统一生成 JWT 响应。 */
     private LoginResponse buildLoginResponse(UserInfo user) {
-        return new LoginResponse(JwtUtil.createToken(user), "Bearer", JwtUtil.getExpiresInSeconds(), user);
+        return new LoginResponse(
+                JwtUtil.createToken(user),
+                "Bearer",
+                JwtUtil.getExpiresInSeconds(),
+                JwtUtil.createRefreshToken(user),
+                JwtUtil.getRefreshExpiresInSeconds(),
+                user
+        );
+    }
+
+    /** 刷新时只替换 access token，refresh token 保持不变。 */
+    private LoginResponse buildRefreshResponse(UserInfo user, String refreshToken) {
+        return new LoginResponse(
+                JwtUtil.createToken(user),
+                "Bearer",
+                JwtUtil.getExpiresInSeconds(),
+                refreshToken,
+                JwtUtil.getRefreshExpiresInSeconds(),
+                user
+        );
     }
 
     private boolean isValidPhone(String phone) {

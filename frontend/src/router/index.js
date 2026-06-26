@@ -58,11 +58,12 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || '学生管理系统'
   const token = localStorage.getItem('token')
-  if (to.meta.requiresAuth && !token) {
+  const refreshToken = localStorage.getItem('refreshToken')
+  if (to.meta.requiresAuth && !token && !refreshToken) {
     next({ path: '/login', query: { redirect: to.fullPath } })
     return
   }
-  if (to.path === '/login' && token) {
+  if (to.path === '/login' && (token || refreshToken)) {
     next('/query')
     return
   }

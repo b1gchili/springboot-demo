@@ -146,6 +146,7 @@ export default {
     },
     afterLogin(data) {
       localStorage.setItem('token', data.token)
+      localStorage.setItem('refreshToken', data.refreshToken)
       localStorage.setItem('user', JSON.stringify(data.user || {}))
       this.$message.success('登录成功')
       const redirect = this.$route.query.redirect || '/query'

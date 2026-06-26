@@ -13,6 +13,8 @@ public interface AuthMapper {
 
     UserRecord findEnabledUserByPhone(@Param("phone") String phone);
 
+    UserRecord findEnabledUserByUserId(@Param("userId") String userId);
+
     int updateLastLoginTime(@Param("userId") String userId);
 
     int insertSmsCode(@Param("phone") String phone,

@@ -23,3 +23,11 @@ export function loginBySms(data) {
     data
   })
 }
+
+export function refreshToken(data) {
+  return request({
+    url: '/auth/refresh',
+    method: 'post',
+    data
+  })
+}
