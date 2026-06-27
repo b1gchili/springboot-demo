@@ -46,4 +46,10 @@
         WHERE id = #{id}
     </select>
 
+    <select id="findUserCouponByCouponNo" resultMap="UserCouponResultMap">
+        SELECT <include refid="UserCouponColumns"/>
+        FROM user_coupon
+        WHERE coupon_no = #{couponNo}
+    </select>
+
 </mapper>

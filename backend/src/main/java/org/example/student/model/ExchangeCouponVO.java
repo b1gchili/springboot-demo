@@ -10,8 +10,10 @@ public class ExchangeCouponVO {
     private String exchangeNo;
     private String requestNo;
     private String userId;
+    private Long userCouponId;
     private String templateCode;
     private String couponNo;
+    private Long pointsCost;
     private Long usedPoints;
     private Long availablePoints;
     private String exchangeStatus;

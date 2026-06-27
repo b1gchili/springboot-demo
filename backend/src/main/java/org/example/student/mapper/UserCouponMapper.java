@@ -10,4 +10,6 @@ public interface UserCouponMapper extends BaseMapper<UserCoupon> {
     int insertUserCoupon(UserCoupon userCoupon);
 
     UserCoupon findUserCouponById(@Param("id") Long id);
+
+    UserCoupon findUserCouponByCouponNo(@Param("couponNo") String couponNo);
 }

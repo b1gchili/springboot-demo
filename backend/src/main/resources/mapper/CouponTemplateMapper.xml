@@ -23,10 +23,12 @@
     <resultMap id="CouponExchangeItemResultMap" type="org.example.student.model.CouponExchangeItemVO">
         <id property="couponTemplateId" column="id"/>
         <result property="templateCode" column="template_code"/>
+        <result property="couponName" column="template_name"/>
         <result property="templateName" column="template_name"/>
         <result property="couponType" column="coupon_type"/>
         <result property="faceValue" column="face_value"/>
         <result property="thresholdAmount" column="threshold_amount"/>
+        <result property="pointsCost" column="exchange_points"/>
         <result property="exchangePoints" column="exchange_points"/>
         <result property="stock" column="stock"/>
         <result property="validDays" column="valid_days"/>

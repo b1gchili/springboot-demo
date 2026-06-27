@@ -11,10 +11,12 @@ import java.math.BigDecimal;
 public class CouponExchangeItemVO {
     private Long couponTemplateId;
     private String templateCode;
+    private String couponName;
     private String templateName;
     private String couponType;
     private BigDecimal faceValue;
     private BigDecimal thresholdAmount;
+    private Long pointsCost;
     private Long exchangePoints;
     private Integer stock;
     private Integer validDays;
