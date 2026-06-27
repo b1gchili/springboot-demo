@@ -56,11 +56,11 @@ public class PointsTaskConfigSeedTests {
         upsertTaskConfig(
                 "SHARE_APP",
                 "分享应用",
-                5,
+                10,
                 1,
                 "UNLIMITED",
                 10,
-                "用户分享应用后奖励积分，同一分享记录只奖励一次"
+                "用户分享应用后奖励积分，每次分享生成新的业务ID即可重复奖励"
         );
     }
 

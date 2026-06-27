@@ -50,12 +50,12 @@
             <el-button
               size="small"
               type="primary"
-              :plain="completedTaskMap[task.taskCode]"
-              :disabled="completedTaskMap[task.taskCode] || !!completingTaskCode"
+              :plain="isTaskCompleted(task)"
+              :disabled="isTaskCompleted(task) || !!completingTaskCode"
               :loading="completingTaskCode === task.taskCode"
               @click="handleCompleteTask(task)"
             >
-              {{ completedTaskMap[task.taskCode] ? '已完成' : task.buttonText }}
+              {{ isTaskCompleted(task) ? '已完成' : task.buttonText }}
             </el-button>
           </div>
         </el-col>
@@ -187,31 +187,17 @@ export default {
           taskName: '完善个人资料',
           description: '补全账号基础信息后领取奖励',
           rewardPoints: 20,
+          repeatable: false,
           bizId: 'COMPLETE_PROFILE',
-          buttonText: '领取积分'
-        },
-        {
-          taskCode: 'FIRST_ORDER',
-          taskName: '首次下单',
-          description: '完成首笔订单后领取奖励',
-          rewardPoints: 50,
-          bizId: 'FIRST_ORDER',
-          buttonText: '领取积分'
-        },
-        {
-          taskCode: 'COMMENT_ORDER',
-          taskName: '评价订单',
-          description: '模拟评价一笔订单，同一订单只奖励一次',
-          rewardPoints: 10,
-          bizId: 'DEMO_ORDER_001',
           buttonText: '领取积分'
         },
         {
           taskCode: 'SHARE_APP',
           taskName: '分享应用',
-          description: '模拟分享应用，同一分享记录只奖励一次',
-          rewardPoints: 5,
-          bizId: 'DEMO_SHARE_001',
+          description: '每次分享都可以领取奖励',
+          rewardPoints: 10,
+          repeatable: true,
+          bizIdPrefix: 'SHARE_APP',
           buttonText: '领取积分'
         }
       ],
@@ -313,17 +299,19 @@ export default {
       this.completingTaskCode = task.taskCode
       completeTask({
         taskCode: task.taskCode,
-        // 不可重复任务后端会统一 bizId，这里仍传入固定值，便于前后端参数保持完整。
-        bizId: task.bizId
+        // 可重复任务每次点击生成新的业务 ID；后端仍用 userId + taskCode + bizId 防止同一次业务重复发奖。
+        bizId: this.buildTaskBizId(task)
       })
         .then(() => {
           this.$message.success('任务积分领取成功')
-          this.markTaskCompleted(task.taskCode)
+          if (!task.repeatable) {
+            this.markTaskCompleted(task.taskCode)
+          }
           this.refreshPointsData()
         })
         .catch(error => {
           const message = error && error.message ? error.message : ''
-          if (message.indexOf('该任务已奖励过积分') >= 0) {
+          if (!task.repeatable && message.indexOf('该任务已奖励过积分') >= 0) {
             this.markTaskCompleted(task.taskCode)
           }
         })
@@ -339,6 +327,16 @@ export default {
     },
     markTaskCompleted(taskCode) {
       this.$set(this.completedTaskMap, taskCode, true)
+    },
+    isTaskCompleted(task) {
+      return !task.repeatable && this.completedTaskMap[task.taskCode]
+    },
+    buildTaskBizId(task) {
+      if (!task.repeatable) {
+        return task.bizId
+      }
+      // 分享应用每次点击都生成新的 bizId，满足“每次分享领取一次积分”的业务效果。
+      return `${task.bizIdPrefix}_${Date.now()}_${Math.random().toString(16).slice(2, 10)}`
     },
     normalizePage(pageData) {
       // 兼容项目 PageResult(list/total) 和常见 records/total 两种分页结构。
