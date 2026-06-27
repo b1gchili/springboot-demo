@@ -48,3 +48,23 @@
 2026-06-27 10:24:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
 2026-06-27 10:24:58.832 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-27 10:24:58.838 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 12:19:38.310 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 12:19:38.312 INFO  [main] o.example.student.StudentApplication - Starting StudentApplication using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 22380 (D:\javacode\springboot-fullstack-demo\backend\target\classes started by 张佳宁 in D:\javacode\springboot-fullstack-demo)
+2026-06-27 12:19:38.313 INFO  [main] o.example.student.StudentApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 12:19:39.240 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-27 12:19:39.241 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-27 12:19:39.241 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-06-27 12:19:39.387 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-27 12:19:40.456 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-27 12:19:40.479 INFO  [main] o.example.student.StudentApplication - Started StudentApplication in 2.583 seconds (JVM running for 3.536)
+2026-06-27 12:19:43.741 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-27 12:19:44.286 INFO  [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 12:19:44.395 INFO  [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 12:19:46.747 INFO  [http-nio-8080-exec-4] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@f885419, 总数=11, 当前页=1
+2026-06-27 12:19:51.487 INFO  [http-nio-8080-exec-8] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@624c79c7, 总数=11, 当前页=1
+2026-06-27 12:19:55.830 INFO  [http-nio-8080-exec-2] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@5ed1b90d, 总数=11, 当前页=1
+2026-06-27 12:20:00.021 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 12:21:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 12:22:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 12:22:00.494 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 12:22:00.501 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
