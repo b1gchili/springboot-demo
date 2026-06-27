@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS points_task_config (
   task_code VARCHAR(64) NOT NULL COMMENT '任务编码',
   task_name VARCHAR(100) NOT NULL COMMENT '任务名称',
   reward_points BIGINT NOT NULL DEFAULT 0 COMMENT '奖励积分',
+  repeatable TINYINT NOT NULL DEFAULT 0 COMMENT '是否可重复奖励：0不可重复，1可重复',
   reward_limit_type VARCHAR(20) NOT NULL DEFAULT 'ONCE' COMMENT '奖励限制类型：ONCE一次性，DAILY每日，UNLIMITED不限次',
   daily_limit INT NOT NULL DEFAULT 1 COMMENT '每日奖励次数上限',
   enabled TINYINT NOT NULL DEFAULT 1 COMMENT '是否启用：1启用，0禁用',
@@ -58,6 +59,22 @@ CREATE TABLE IF NOT EXISTS points_task_config (
   UNIQUE KEY uk_points_task_config_code (task_code),
   KEY idx_points_task_config_enabled (enabled)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='积分任务配置表';
+
+SET @column_exists = (
+  SELECT COUNT(*)
+  FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_SCHEMA = DATABASE()
+    AND TABLE_NAME = 'points_task_config'
+    AND COLUMN_NAME = 'repeatable'
+);
+SET @sql = IF(
+  @column_exists = 0,
+  'ALTER TABLE points_task_config ADD COLUMN repeatable TINYINT NOT NULL DEFAULT 0 COMMENT ''是否可重复奖励：0不可重复，1可重复'' AFTER reward_points',
+  'SELECT 1'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 
 CREATE TABLE IF NOT EXISTS points_task_record (
   id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
@@ -134,6 +151,7 @@ INSERT INTO points_task_config (
   task_code,
   task_name,
   reward_points,
+  repeatable,
   reward_limit_type,
   daily_limit,
   enabled,
@@ -143,6 +161,7 @@ SELECT
   'COMPLETE_PROFILE',
   '完善个人资料',
   20,
+  0,
   'ONCE',
   1,
   1,
@@ -155,6 +174,7 @@ INSERT INTO points_task_config (
   task_code,
   task_name,
   reward_points,
+  repeatable,
   reward_limit_type,
   daily_limit,
   enabled,
@@ -164,6 +184,7 @@ SELECT
   'DAILY_SIGN_IN',
   '每日签到',
   10,
+  1,
   'DAILY',
   1,
   1,

@@ -12,6 +12,5 @@ public class CompleteTaskRequest {
     @NotBlank(message = "任务编码不能为空")
     private String taskCode;
 
-    @NotBlank(message = "业务ID不能为空")
     private String bizId;
 }

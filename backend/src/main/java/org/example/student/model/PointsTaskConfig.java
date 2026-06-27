@@ -26,6 +26,8 @@ public class PointsTaskConfig {
     @TableField("reward_points")
     private Long rewardPoints;
 
+    private Integer repeatable;
+
     @TableField("reward_limit_type")
     private String rewardLimitType;
 

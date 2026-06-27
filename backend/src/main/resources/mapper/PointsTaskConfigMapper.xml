@@ -9,6 +9,7 @@
         <result property="taskCode" column="task_code"/>
         <result property="taskName" column="task_name"/>
         <result property="rewardPoints" column="reward_points"/>
+        <result property="repeatable" column="repeatable"/>
         <result property="rewardLimitType" column="reward_limit_type"/>
         <result property="dailyLimit" column="daily_limit"/>
         <result property="enabled" column="enabled"/>
@@ -18,7 +19,7 @@
     </resultMap>
 
     <sql id="PointsTaskConfigColumns">
-        id, task_code, task_name, reward_points, reward_limit_type,
+        id, task_code, task_name, reward_points, repeatable, reward_limit_type,
         daily_limit, enabled, description, create_time, update_time
     </sql>
 
