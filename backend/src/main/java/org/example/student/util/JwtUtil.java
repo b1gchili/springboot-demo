@@ -121,6 +121,18 @@ public class JwtUtil {
     }
 
     /**
+     * 从有效 access token 中读取用户 ID。
+     */
+    public static String getUserId(String token) {
+        if (!validateAccessToken(token)) {
+            throw new BusinessException(401, "登录已过期，请重新登录");
+        }
+        String[] parts = token.split("\\.");
+        String payload = new String(Base64.getUrlDecoder().decode(parts[1]), StandardCharsets.UTF_8);
+        return readStringClaim(payload, "sub");
+    }
+
+    /**
      * 从有效 refresh token 中读取用户 ID，用于无感知刷新 access token。
      */
     public static String getUserIdFromRefreshToken(String token) {

@@ -30,8 +30,9 @@ public class AuthInterceptor implements HandlerInterceptor {
             token = authorization.substring(7);
         }
 
-        // token 有效则放行，并把用户名放到 request 中，后续业务可按需读取。
+        // token 有效则放行，并把当前登录用户信息放到 request 中，后续业务可按需读取。
         if (JwtUtil.validateAccessToken(token)) {
+            request.setAttribute("userId", JwtUtil.getUserId(token));
             request.setAttribute("username", JwtUtil.getUsername(token));
             return true;
         }

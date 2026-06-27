@@ -151,6 +151,27 @@ WHERE NOT EXISTS (
   SELECT 1 FROM points_task_config WHERE task_code = 'COMPLETE_PROFILE'
 );
 
+INSERT INTO points_task_config (
+  task_code,
+  task_name,
+  reward_points,
+  reward_limit_type,
+  daily_limit,
+  enabled,
+  description
+)
+SELECT
+  'DAILY_SIGN_IN',
+  '每日签到',
+  10,
+  'DAILY',
+  1,
+  1,
+  '用户每日签到奖励积分'
+WHERE NOT EXISTS (
+  SELECT 1 FROM points_task_config WHERE task_code = 'DAILY_SIGN_IN'
+);
+
 -- 优惠券模板扣库存示例：业务代码执行时需要带 stock > 0 条件，避免超卖。
 -- UPDATE coupon_template
 -- SET stock = stock - 1
