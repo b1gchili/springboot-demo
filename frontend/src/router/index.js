@@ -6,6 +6,7 @@ import StudentForm from '@/views/StudentForm.vue'
 import UserList from '@/views/UserList.vue'
 import LoginLogList from '@/views/LoginLogList.vue'
 import PointsIndex from '@/views/PointsIndex.vue'
+import CouponExchange from '@/views/CouponExchange.vue'
 
 Vue.use(VueRouter)
 
@@ -48,7 +49,13 @@ const routes = [
     path: '/points',
     name: 'PointsIndex',
     component: PointsIndex,
-    meta: { title: '我的积分', requiresAuth: true }
+    meta: { title: '积分中心', requiresAuth: true }
+  },
+  {
+    path: '/points/coupon-exchange',
+    name: 'CouponExchange',
+    component: CouponExchange,
+    meta: { title: '积分商城', requiresAuth: true }
   },
   {
     path: '/login-logs',

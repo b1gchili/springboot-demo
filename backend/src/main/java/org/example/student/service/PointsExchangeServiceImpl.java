@@ -54,9 +54,9 @@ public class PointsExchangeServiceImpl implements PointsExchangeService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public ExchangeCouponVO exchangeCoupon(Long userId, ExchangeCouponRequest request) {
+    public ExchangeCouponVO exchangeCoupon(String userId, ExchangeCouponRequest request) {
         validateExchangeRequest(userId, request);
-        String userIdValue = String.valueOf(userId);
+        String userIdValue = userId.trim();
 
         PointsExchangeRecord existing = pointsExchangeRecordMapper.findByUserIdAndRequestNo(
                 userIdValue,
@@ -64,7 +64,7 @@ public class PointsExchangeServiceImpl implements PointsExchangeService {
         );
         if (existing != null) {
             if (EXCHANGE_SUCCESS.equals(existing.getExchangeStatus())) {
-                return buildExchangeVO(existing, userId);
+                return buildExchangeVO(existing, userIdValue);
             }
             throw new BusinessException(400, "请勿重复兑换");
         }
@@ -84,7 +84,7 @@ public class PointsExchangeServiceImpl implements PointsExchangeService {
 
         long pointsCost = template.getExchangePoints() == null ? 0L : template.getExchangePoints();
         UserPoints userPoints = pointsAccountService.deductPoints(
-                userId,
+                userIdValue,
                 Math.toIntExact(pointsCost),
                 PointsSourceTypeEnum.EXCHANGE.name(),
                 request.getCouponTemplateId() + ":" + request.getRequestNo(),
@@ -135,7 +135,7 @@ public class PointsExchangeServiceImpl implements PointsExchangeService {
         return record;
     }
 
-    private ExchangeCouponVO buildExchangeVO(PointsExchangeRecord record, Long userId) {
+    private ExchangeCouponVO buildExchangeVO(PointsExchangeRecord record, String userId) {
         UserCoupon userCoupon = userCouponMapper.findUserCouponByCouponNo(record.getCouponNo());
         UserPoints userPoints = pointsAccountService.getOrCreateUserPoints(userId);
         return buildExchangeVO(record, userCoupon, userPoints.getAvailablePoints());
@@ -156,8 +156,8 @@ public class PointsExchangeServiceImpl implements PointsExchangeService {
         return vo;
     }
 
-    private void validateExchangeRequest(Long userId, ExchangeCouponRequest request) {
-        if (userId == null || userId <= 0) {
+    private void validateExchangeRequest(String userId, ExchangeCouponRequest request) {
+        if (!StringUtils.hasText(userId)) {
             throw new BusinessException(400, "用户ID不能为空");
         }
         if (request == null || request.getCouponTemplateId() == null) {

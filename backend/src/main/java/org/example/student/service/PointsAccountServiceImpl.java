@@ -36,7 +36,7 @@ public class PointsAccountServiceImpl implements PointsAccountService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public UserPoints getOrCreateUserPoints(Long userId) {
+    public UserPoints getOrCreateUserPoints(String userId) {
         String userIdValue = normalizeUserId(userId);
         UserPoints existing = userPointsMapper.findByUserId(userIdValue);
         if (existing != null) {
@@ -68,17 +68,17 @@ public class PointsAccountServiceImpl implements PointsAccountService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public UserPoints changePoints(Long userId,
+    public UserPoints changePoints(String userId,
                                    Integer pointsChange,
                                    String sourceType,
                                    String sourceId,
                                    String reason) {
         validateChangeRequest(userId, pointsChange, sourceType, reason);
-        String userIdValue = String.valueOf(userId);
+        String userIdValue = normalizeUserId(userId);
         long change = pointsChange.longValue();
 
         for (int i = 0; i < MAX_RETRY_TIMES; i++) {
-            UserPoints current = getOrCreateUserPoints(userId);
+            UserPoints current = getOrCreateUserPoints(userIdValue);
             long beforePoints = current.getAvailablePoints() == null ? 0L : current.getAvailablePoints();
             long afterPoints = beforePoints + change;
             if (afterPoints < 0) {
@@ -109,7 +109,7 @@ public class PointsAccountServiceImpl implements PointsAccountService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public UserPoints addPoints(Long userId,
+    public UserPoints addPoints(String userId,
                                 Integer points,
                                 String sourceType,
                                 String sourceId,
@@ -122,7 +122,7 @@ public class PointsAccountServiceImpl implements PointsAccountService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public UserPoints deductPoints(Long userId,
+    public UserPoints deductPoints(String userId,
                                    Integer points,
                                    String sourceType,
                                    String sourceId,
@@ -153,7 +153,7 @@ public class PointsAccountServiceImpl implements PointsAccountService {
         pointsFlowMapper.insertPointsFlow(flow);
     }
 
-    private void validateChangeRequest(Long userId, Integer pointsChange, String sourceType, String reason) {
+    private void validateChangeRequest(String userId, Integer pointsChange, String sourceType, String reason) {
         normalizeUserId(userId);
         if (pointsChange == null || pointsChange == 0) {
             throw new BusinessException(400, "积分变动值不能为0");
@@ -166,10 +166,10 @@ public class PointsAccountServiceImpl implements PointsAccountService {
         }
     }
 
-    private String normalizeUserId(Long userId) {
-        if (userId == null || userId <= 0) {
+    private String normalizeUserId(String userId) {
+        if (!StringUtils.hasText(userId)) {
             throw new BusinessException(400, "用户ID不能为空");
         }
-        return String.valueOf(userId);
+        return userId.trim();
     }
 }

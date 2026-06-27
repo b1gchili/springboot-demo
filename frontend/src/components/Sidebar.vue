@@ -23,7 +23,11 @@
       </el-menu-item>
       <el-menu-item index="/points">
         <i class="el-icon-coin"></i>
-        <span slot="title">我的积分</span>
+        <span slot="title">积分中心</span>
+      </el-menu-item>
+      <el-menu-item index="/points/coupon-exchange">
+        <i class="el-icon-present"></i>
+        <span slot="title">积分商城</span>
       </el-menu-item>
       <el-menu-item index="/login-logs">
         <i class="el-icon-document"></i>

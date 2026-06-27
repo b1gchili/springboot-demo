@@ -12,5 +12,9 @@ import java.util.List;
 public interface PointsExchangeService {
     List<CouponExchangeItemVO> listExchangeableCoupons();
 
-    ExchangeCouponVO exchangeCoupon(Long userId, ExchangeCouponRequest request);
+    ExchangeCouponVO exchangeCoupon(String userId, ExchangeCouponRequest request);
+
+    default ExchangeCouponVO exchangeCoupon(Long userId, ExchangeCouponRequest request) {
+        return exchangeCoupon(userId == null ? null : String.valueOf(userId), request);
+    }
 }

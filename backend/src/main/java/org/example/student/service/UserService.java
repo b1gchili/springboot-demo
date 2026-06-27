@@ -13,6 +13,8 @@ import org.example.student.model.UserListItem;
 import org.example.student.model.UserRecord;
 import org.example.student.model.UserRequest;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -20,15 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-    private final UserMapper userMapper;
+    private static final int ADD_USER_MAX_RETRY_TIMES = 3;
 
-    public UserService(UserMapper userMapper) {
+    private final UserMapper userMapper;
+    private final JdbcTemplate jdbcTemplate;
+
+    public UserService(UserMapper userMapper, JdbcTemplate jdbcTemplate) {
         this.userMapper = userMapper;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     /**
@@ -71,8 +76,27 @@ public class UserService {
         validateUser(request, true);
         checkUnique(request.getUsername(), request.getPhone(), null);
 
+        for (int i = 0; i < ADD_USER_MAX_RETRY_TIMES; i++) {
+            UserRecord user = buildUserRecord(request);
+            try {
+                userMapper.insert(user);
+                return user.getUserId();
+            } catch (DuplicateKeyException e) {
+                // 并发新增时如果 user_id 撞唯一索引，重新取最大数字 ID 后再试。
+                if (i == ADD_USER_MAX_RETRY_TIMES - 1) {
+                    throw new BusinessException(500, "新增用户失败，请稍后再试");
+                }
+            } catch (DataAccessException e) {
+                throw new BusinessException(500, "新增用户失败，请稍后再试");
+            }
+        }
+        throw new BusinessException(500, "新增用户失败，请稍后再试");
+    }
+
+    private UserRecord buildUserRecord(UserRequest request) {
         UserRecord user = new UserRecord();
-        user.setUserId(UUID.randomUUID().toString().replace("-", ""));
+        // 新增用户的业务 ID 改为数字递增，避免 UUID 影响展示和积分系统用户关联。
+        user.setUserId(generateNextUserId());
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
@@ -80,12 +104,16 @@ public class UserService {
         user.setAvatarUrl(request.getAvatarUrl());
         user.setLoginCount(0L);
         user.setEnabled(1);
-        try {
-            userMapper.insert(user);
-        } catch (DataAccessException e) {
-            throw new BusinessException(500, "新增用户失败，请稍后再试");
-        }
-        return user.getUserId();
+        return user;
+    }
+
+    private String generateNextUserId() {
+        // sys_user.user_id 仍是业务 ID 字段；这里只统计纯数字 ID，兼容历史 UUID 数据。
+        Long maxUserId = jdbcTemplate.queryForObject(
+                "SELECT COALESCE(MAX(CAST(user_id AS UNSIGNED)), 0) FROM sys_user WHERE user_id REGEXP '^[0-9]+$'",
+                Long.class
+        );
+        return String.valueOf((maxUserId == null ? 0L : maxUserId) + 1);
     }
 
     /**

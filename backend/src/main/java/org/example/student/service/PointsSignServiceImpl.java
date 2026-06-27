@@ -11,6 +11,7 @@ import org.example.student.model.UserPoints;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
 
@@ -39,12 +40,12 @@ public class PointsSignServiceImpl implements PointsSignService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public SignInVO signIn(Long userId) {
-        if (userId == null || userId <= 0) {
+    public SignInVO signIn(String userId) {
+        if (!StringUtils.hasText(userId)) {
             throw new BusinessException(400, "用户ID不能为空");
         }
 
-        String userIdValue = String.valueOf(userId);
+        String userIdValue = userId.trim();
         LocalDate today = LocalDate.now();
         PointsTaskConfig taskConfig = pointsTaskConfigMapper.findByTaskCode(DAILY_SIGN_IN_TASK_CODE);
         if (taskConfig == null || taskConfig.getEnabled() == null || taskConfig.getEnabled() != 1) {

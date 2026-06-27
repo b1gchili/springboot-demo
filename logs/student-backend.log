@@ -92,3 +92,222 @@
 2026-06-27 14:02:08.722 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
 2026-06-27 14:02:10.588 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
 2026-06-27 14:03:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:04:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:05:00.017 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:06:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:07:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:07:48.369 INFO  [http-nio-8080-exec-9] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@3bdcd9c9, 总数=11, 当前页=1
+2026-06-27 14:08:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:08:44.811 WARN  [http-nio-8080-exec-6] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:09:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:10:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:11:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:12:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:13:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:14:00.004 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:14:25.667 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:15:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:16:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:17:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:18:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:19:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:20:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:21:00.013 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:22:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:23:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:24:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:25:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:25:42.235 INFO  [http-nio-8080-exec-7] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=20, before=10, after=30
+2026-06-27 14:26:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:27:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:28:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:29:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:30:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:31:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:32:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:33:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:34:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:35:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:36:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:37:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:38:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:39:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:40:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:41:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:41:39.561 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:41:54.111 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=任务不存在或已禁用
+2026-06-27 14:41:58.397 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=任务不存在或已禁用
+2026-06-27 14:42:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:42:01.042 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=任务不存在或已禁用
+2026-06-27 14:43:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:43:14.893 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=积分不足
+2026-06-27 14:44:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:44:26.988 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=任务不存在或已禁用
+2026-06-27 14:45:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:46:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:47:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:47:32.973 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:47:36.093 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:47:44.041 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:47:47.648 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:48:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:48:00.450 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:49:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:49:09.556 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:50:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:50:49.767 INFO  [http-nio-8080-exec-3] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=10, before=30, after=40
+2026-06-27 14:50:53.346 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:50:56.012 INFO  [http-nio-8080-exec-7] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=5, before=40, after=45
+2026-06-27 14:50:58.072 WARN  [http-nio-8080-exec-6] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:51:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:51:00.306 INFO  [http-nio-8080-exec-10] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=50, before=45, after=95
+2026-06-27 14:51:02.092 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:51:43.208 INFO  [http-nio-8080-exec-1] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=-50, before=95, after=45
+2026-06-27 14:52:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:53:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:53:24.514 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:53:48.470 WARN  [http-nio-8080-exec-8] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:53:50.881 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:53:53.982 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:54:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:54:24.334 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=账号或密码错误
+2026-06-27 14:54:36.247 INFO  [http-nio-8080-exec-6] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@79cec628, 总数=11, 当前页=1
+2026-06-27 14:54:42.812 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:54:49.203 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 14:55:00.017 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:56:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:57:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:58:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:59:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:00:00.004 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:00:39.553 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 15:00:41.859 INFO  [http-nio-8080-exec-2] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@723cc7af, 总数=11, 当前页=1
+2026-06-27 15:00:45.475 WARN  [http-nio-8080-exec-8] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=账号或密码错误
+2026-06-27 15:00:48.179 INFO  [http-nio-8080-exec-3] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@ddade, 总数=11, 当前页=1
+2026-06-27 15:01:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:01:36.781 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=500, message=阿里云 OSS 配置不完整
+2026-06-27 15:01:46.437 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=500, message=阿里云 OSS 配置不完整
+2026-06-27 15:02:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:02:28.160 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=手机号已存在
+2026-06-27 15:03:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=3
+2026-06-27 15:03:43.884 INFO  [http-nio-8080-exec-8] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@793173ad, 总数=11, 当前页=1
+2026-06-27 15:03:45.417 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:46.483 WARN  [http-nio-8080-exec-6] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:46.484 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:46.483 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:52.934 WARN  [http-nio-8080-exec-8] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:52.934 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:52.934 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:58.383 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:03:59.903 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:04:03.057 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:06.834 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:06.834 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:06.834 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:14.394 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:14.394 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:14.394 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:18.547 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:04:22.369 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:05:22.368 WARN  [http-nio-8080-exec-8] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:23.464 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:23.464 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:23.463 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:24.075 WARN  [http-nio-8080-exec-6] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:24.883 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:24.883 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:24.883 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:05:33.702 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=500, message=阿里云 OSS 配置不完整
+2026-06-27 15:06:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:07:00.013 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:08:00.018 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:09:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:10:00.010 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:11:00.004 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:11:14.329 INFO  [http-nio-8080-exec-3] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@3dd9d688, 总数=11, 当前页=1
+2026-06-27 15:11:41.918 INFO  [http-nio-8080-exec-6] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@4c10ce84, 总数=11, 当前页=1
+2026-06-27 15:11:42.962 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:42.962 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:42.963 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:43.911 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:46.826 WARN  [http-nio-8080-exec-3] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:46.826 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:46.826 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=登录用户信息无效
+2026-06-27 15:11:56.310 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 15:11:56.312 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 15:12:02.199 INFO  [main] o.example.student.StudentApplication - Starting StudentApplication using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 6616 (D:\javacode\springboot-fullstack-demo\backend\target\classes started by 张佳宁 in D:\javacode\springboot-fullstack-demo)
+2026-06-27 15:12:02.197 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 15:12:02.200 INFO  [main] o.example.student.StudentApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 15:12:03.051 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-27 15:12:03.052 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-27 15:12:03.052 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-06-27 15:12:03.210 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-27 15:12:04.217 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-27 15:12:04.240 INFO  [main] o.example.student.StudentApplication - Started StudentApplication in 2.366 seconds (JVM running for 3.247)
+2026-06-27 15:12:06.796 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-27 15:12:07.252 INFO  [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 15:12:07.357 INFO  [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 15:12:07.399 INFO  [http-nio-8080-exec-1] o.e.s.s.PointsAccountServiceImpl - 创建用户积分账户: userId=72bf1dcca2dd419a8523bd6409741905
+2026-06-27 15:12:12.240 INFO  [http-nio-8080-exec-5] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@66a366c3, 总数=11, 当前页=1
+2026-06-27 15:12:15.834 INFO  [http-nio-8080-exec-5] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=72bf1dcca2dd419a8523bd6409741905, pointsChange=20, before=0, after=20
+2026-06-27 15:12:16.235 INFO  [http-nio-8080-exec-9] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=72bf1dcca2dd419a8523bd6409741905, pointsChange=50, before=20, after=70
+2026-06-27 15:12:16.911 INFO  [http-nio-8080-exec-4] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=72bf1dcca2dd419a8523bd6409741905, pointsChange=10, before=70, after=80
+2026-06-27 15:12:17.868 INFO  [http-nio-8080-exec-7] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=72bf1dcca2dd419a8523bd6409741905, pointsChange=5, before=80, after=85
+2026-06-27 15:12:26.848 WARN  [http-nio-8080-exec-5] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:12:27.564 WARN  [http-nio-8080-exec-7] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:12:28.371 WARN  [http-nio-8080-exec-6] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:12:28.791 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:12:33.105 INFO  [http-nio-8080-exec-4] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=72bf1dcca2dd419a8523bd6409741905, pointsChange=-50, before=85, after=35
+2026-06-27 15:13:00.027 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:13:57.924 INFO  [http-nio-8080-exec-10] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@4983d2cc, 总数=11, 当前页=1
+2026-06-27 15:14:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:15:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:16:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:17:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:18:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:19:00.004 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:20:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:21:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:21:15.104 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 15:21:15.111 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 15:21:20.825 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 15:21:20.827 INFO  [main] o.example.student.StudentApplication - Starting StudentApplication using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 14660 (D:\javacode\springboot-fullstack-demo\backend\target\classes started by 张佳宁 in D:\javacode\springboot-fullstack-demo)
+2026-06-27 15:21:20.827 INFO  [main] o.example.student.StudentApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 15:21:21.691 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-27 15:21:21.691 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-27 15:21:21.691 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-06-27 15:21:21.840 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-27 15:21:22.860 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-27 15:21:22.885 INFO  [main] o.example.student.StudentApplication - Started StudentApplication in 2.404 seconds (JVM running for 3.382)
+2026-06-27 15:21:31.690 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-27 15:21:32.112 INFO  [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 15:21:32.224 INFO  [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 15:21:43.888 INFO  [http-nio-8080-exec-8] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@268ef8e8, 总数=11, 当前页=1
+2026-06-27 15:22:00.034 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=4
+2026-06-27 15:22:18.766 INFO  [http-nio-8080-exec-3] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@3d0080f0, 总数=11, 当前页=1
+2026-06-27 15:22:21.822 INFO  [http-nio-8080-exec-2] o.e.s.s.PointsAccountServiceImpl - 创建用户积分账户: userId=5
+2026-06-27 15:22:25.337 INFO  [http-nio-8080-exec-10] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=5, pointsChange=20, before=0, after=20
+2026-06-27 15:22:46.936 INFO  [http-nio-8080-exec-1] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@2377fc37, 总数=11, 当前页=1
+2026-06-27 15:22:56.687 WARN  [http-nio-8080-exec-1] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:22:57.972 WARN  [http-nio-8080-exec-9] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:22:58.487 WARN  [http-nio-8080-exec-8] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:22:59.542 WARN  [http-nio-8080-exec-10] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=该任务已奖励过积分
+2026-06-27 15:23:00.020 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=5
+2026-06-27 15:23:06.866 INFO  [http-nio-8080-exec-10] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@57ea51d3, 总数=11, 当前页=1
+2026-06-27 15:23:10.043 INFO  [http-nio-8080-exec-2] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=5, pointsChange=50, before=20, after=70
+2026-06-27 15:24:00.025 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=5
+2026-06-27 15:25:00.006 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=5
+2026-06-27 15:26:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=5
+2026-06-27 15:27:00.004 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=5
+2026-06-27 15:27:42.763 INFO  [http-nio-8080-exec-7] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@1b4e9c4, 总数=11, 当前页=1
+2026-06-27 15:28:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:29:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:29:29.231 INFO  [http-nio-8080-exec-1] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=5, pointsChange=10, before=70, after=80
+2026-06-27 15:30:00.013 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:31:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:32:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:33:00.014 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:34:00.003 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 15:35:00.002 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2

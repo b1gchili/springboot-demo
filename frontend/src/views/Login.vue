@@ -113,6 +113,9 @@ export default {
         this.loading = true
         loginByPassword(this.passwordForm)
           .then(res => this.afterLogin(res.data))
+          .catch(() => {
+            // 业务异常已由 request 拦截器用 Message.error 展示，这里消费异常，避免开发环境红屏。
+          })
           .finally(() => {
             this.loading = false
           })
@@ -128,6 +131,9 @@ export default {
             this.$message.success('验证码已发送，有效期' + res.data.expiresIn + '秒')
             this.startCountdown(res.data.expiresIn || 60)
           })
+          .catch(() => {
+            // 业务异常已由 request 拦截器用 Message.error 展示，这里消费异常，避免开发环境红屏。
+          })
           .finally(() => {
             this.sendingCode = false
           })
@@ -139,6 +145,9 @@ export default {
         this.loading = true
         loginBySms(this.smsForm)
           .then(res => this.afterLogin(res.data))
+          .catch(() => {
+            // 业务异常已由 request 拦截器用 Message.error 展示，这里消费异常，避免开发环境红屏。
+          })
           .finally(() => {
             this.loading = false
           })

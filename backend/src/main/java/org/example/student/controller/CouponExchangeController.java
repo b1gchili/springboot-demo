@@ -39,19 +39,15 @@ public class CouponExchangeController {
     @PostMapping
     public Result<ExchangeCouponVO> exchangeCoupon(@RequestBody @Valid ExchangeCouponRequest request,
                                                    HttpServletRequest httpServletRequest) {
-        Long userId = getCurrentUserId(httpServletRequest);
+        String userId = getCurrentUserId(httpServletRequest);
         return Result.success(pointsExchangeService.exchangeCoupon(userId, request));
     }
 
-    private Long getCurrentUserId(HttpServletRequest request) {
+    private String getCurrentUserId(HttpServletRequest request) {
         Object userId = request.getAttribute("userId");
         if (userId == null) {
             throw new BusinessException(401, "未登录或登录已过期");
         }
-        try {
-            return Long.valueOf(String.valueOf(userId));
-        } catch (NumberFormatException e) {
-            throw new BusinessException(401, "登录用户信息无效");
-        }
+        return String.valueOf(userId);
     }
 }

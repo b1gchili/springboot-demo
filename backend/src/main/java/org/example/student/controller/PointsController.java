@@ -42,7 +42,7 @@ public class PointsController {
      */
     @GetMapping("/me")
     public Result<UserPointsVO> getMyPoints(HttpServletRequest request) {
-        Long userId = getCurrentUserId(request);
+        String userId = getCurrentUserId(request);
         return Result.success(pointsQueryService.getMyPoints(userId));
     }
 
@@ -53,7 +53,7 @@ public class PointsController {
     public Result<PageResult<PointsFlowVO>> listMyFlows(@RequestParam(required = false) Integer pageNum,
                                                         @RequestParam(required = false) Integer pageSize,
                                                         HttpServletRequest request) {
-        Long userId = getCurrentUserId(request);
+        String userId = getCurrentUserId(request);
         return Result.success(pointsQueryService.listMyFlows(userId, pageNum, pageSize));
     }
 
@@ -64,7 +64,7 @@ public class PointsController {
     public Result<PointsRankingPageVO> listRanking(@RequestParam(required = false) Integer pageNum,
                                                    @RequestParam(required = false) Integer pageSize,
                                                    HttpServletRequest request) {
-        Long userId = getCurrentUserId(request);
+        String userId = getCurrentUserId(request);
         return Result.success(pointsQueryService.listRanking(userId, pageNum, pageSize));
     }
 
@@ -73,7 +73,7 @@ public class PointsController {
      */
     @PostMapping("/sign-in")
     public Result<SignInVO> signIn(HttpServletRequest request) {
-        Long userId = getCurrentUserId(request);
+        String userId = getCurrentUserId(request);
         return Result.success(pointsSignService.signIn(userId));
     }
 
@@ -83,19 +83,15 @@ public class PointsController {
     @PostMapping("/tasks/complete")
     public Result<TaskRewardVO> completeTask(@RequestBody @Valid CompleteTaskRequest completeTaskRequest,
                                              HttpServletRequest request) {
-        Long userId = getCurrentUserId(request);
+        String userId = getCurrentUserId(request);
         return Result.success(pointsTaskService.completeTask(userId, completeTaskRequest));
     }
 
-    private Long getCurrentUserId(HttpServletRequest request) {
+    private String getCurrentUserId(HttpServletRequest request) {
         Object userId = request.getAttribute("userId");
         if (userId == null) {
             throw new BusinessException(401, "未登录或登录已过期");
         }
-        try {
-            return Long.valueOf(String.valueOf(userId));
-        } catch (NumberFormatException e) {
-            throw new BusinessException(401, "登录用户信息无效");
-        }
+        return String.valueOf(userId);
     }
 }

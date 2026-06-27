@@ -71,7 +71,7 @@
                 up.available_points,
                 up.total_earned_points
             FROM user_points up
-            LEFT JOIN sys_user su ON up.user_id = su.user_id
+            LEFT JOIN sys_user su ON up.user_id = su.user_id OR up.user_id = CAST(su.id AS CHAR)
             ORDER BY up.total_earned_points DESC, up.update_time ASC
         ) sorted
         CROSS JOIN (SELECT @rank_num := 0) r
@@ -102,7 +102,7 @@
                     up_inner.total_earned_points,
                     up_inner.update_time
                 FROM user_points up_inner
-                LEFT JOIN sys_user su_inner ON up_inner.user_id = su_inner.user_id
+                LEFT JOIN sys_user su_inner ON up_inner.user_id = su_inner.user_id OR up_inner.user_id = CAST(su_inner.id AS CHAR)
                 ORDER BY up_inner.total_earned_points DESC, up_inner.update_time ASC
             ) sorted
             CROSS JOIN (SELECT @rank_num := 0) r

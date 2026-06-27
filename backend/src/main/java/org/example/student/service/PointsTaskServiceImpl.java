@@ -36,8 +36,8 @@ public class PointsTaskServiceImpl implements PointsTaskService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public TaskRewardVO completeTask(Long userId, CompleteTaskRequest request) {
-        if (userId == null || userId <= 0) {
+    public TaskRewardVO completeTask(String userId, CompleteTaskRequest request) {
+        if (!StringUtils.hasText(userId)) {
             throw new BusinessException(400, "用户ID不能为空");
         }
         if (request == null || !StringUtils.hasText(request.getTaskCode())) {
@@ -55,7 +55,7 @@ public class PointsTaskServiceImpl implements PointsTaskService {
             throw new BusinessException(400, "业务ID不能为空");
         }
 
-        String userIdValue = String.valueOf(userId);
+        String userIdValue = userId.trim();
         PointsTaskRecord existing = pointsTaskRecordMapper.findByUserIdAndTaskCodeAndBizId(
                 userIdValue,
                 taskConfig.getTaskCode(),
@@ -79,7 +79,7 @@ public class PointsTaskServiceImpl implements PointsTaskService {
         }
 
         UserPoints userPoints = pointsAccountService.addPoints(
-                userId,
+                userIdValue,
                 Math.toIntExact(rewardPoints),
                 PointsSourceTypeEnum.TASK.name(),
                 taskConfig.getTaskCode() + ":" + bizId,

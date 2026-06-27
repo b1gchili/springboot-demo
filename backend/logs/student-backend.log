@@ -268,3 +268,19 @@
 2026-06-27 13:48:34.315 INFO  [pool-1-thread-12] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=9900001, pointsChange=10, before=0, after=10
 2026-06-27 13:48:34.418 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-27 13:48:34.429 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 14:43:03.020 INFO  [main] o.e.student.CouponTemplateSeedTests - Starting CouponTemplateSeedTests using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 22096 (started by 张佳宁 in D:\javacode\springboot-fullstack-demo\backend)
+2026-06-27 14:43:03.021 INFO  [main] o.e.student.CouponTemplateSeedTests - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 14:43:03.026 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 14:43:06.390 INFO  [main] o.e.student.CouponTemplateSeedTests - Started CouponTemplateSeedTests in 3.719 seconds (JVM running for 4.877)
+2026-06-27 14:43:06.704 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 14:43:06.895 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 14:43:06.955 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 14:43:06.961 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 14:50:06.838 INFO  [main] o.e.s.PointsTaskConfigSeedTests - Starting PointsTaskConfigSeedTests using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 13960 (started by 张佳宁 in D:\javacode\springboot-fullstack-demo\backend)
+2026-06-27 14:50:06.839 INFO  [main] o.e.s.PointsTaskConfigSeedTests - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 14:50:06.846 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 14:50:10.100 INFO  [main] o.e.s.PointsTaskConfigSeedTests - Started PointsTaskConfigSeedTests in 3.625 seconds (JVM running for 4.759)
+2026-06-27 14:50:10.426 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 14:50:10.638 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 14:50:10.739 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 14:50:10.747 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

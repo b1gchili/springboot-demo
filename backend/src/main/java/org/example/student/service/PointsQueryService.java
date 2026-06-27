@@ -9,9 +9,21 @@ import org.example.student.model.UserPointsVO;
  * 积分查询服务。
  */
 public interface PointsQueryService {
-    UserPointsVO getMyPoints(Long userId);
+    UserPointsVO getMyPoints(String userId);
 
-    PageResult<PointsFlowVO> listMyFlows(Long userId, Integer pageNum, Integer pageSize);
+    default UserPointsVO getMyPoints(Long userId) {
+        return getMyPoints(userId == null ? null : String.valueOf(userId));
+    }
 
-    PointsRankingPageVO listRanking(Long userId, Integer pageNum, Integer pageSize);
+    PageResult<PointsFlowVO> listMyFlows(String userId, Integer pageNum, Integer pageSize);
+
+    default PageResult<PointsFlowVO> listMyFlows(Long userId, Integer pageNum, Integer pageSize) {
+        return listMyFlows(userId == null ? null : String.valueOf(userId), pageNum, pageSize);
+    }
+
+    PointsRankingPageVO listRanking(String userId, Integer pageNum, Integer pageSize);
+
+    default PointsRankingPageVO listRanking(Long userId, Integer pageNum, Integer pageSize) {
+        return listRanking(userId == null ? null : String.valueOf(userId), pageNum, pageSize);
+    }
 }
