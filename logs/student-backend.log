@@ -1,0 +1,50 @@
+2026-06-27 09:57:10.438 INFO  [main] o.example.student.StudentApplication - Starting StudentApplication using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 26536 (D:\javacode\springboot-fullstack-demo\backend\target\classes started by 张佳宁 in D:\javacode\springboot-fullstack-demo)
+2026-06-27 09:57:10.435 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 09:57:10.444 INFO  [main] o.example.student.StudentApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 09:57:11.989 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-27 09:57:11.990 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-27 09:57:11.990 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-06-27 09:57:12.285 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-27 09:57:13.819 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-27 09:57:13.869 INFO  [main] o.example.student.StudentApplication - Started StudentApplication in 4.242 seconds (JVM running for 6.586)
+2026-06-27 09:57:38.421 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-27 09:58:00.059 INFO  [scheduling-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 09:58:00.229 INFO  [scheduling-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 09:58:00.251 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 09:59:00.013 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:00:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:01:00.020 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:02:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:03:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:03:36.522 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=401, message=账号或密码错误
+2026-06-27 10:03:48.207 INFO  [http-nio-8080-exec-4] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@6688fa2b, 总数=11, 当前页=1
+2026-06-27 10:03:59.270 INFO  [http-nio-8080-exec-8] o.e.student.service.AuthService - 手机验证码已生成: phone=13800138000, code=289712, expiresIn=60s
+2026-06-27 10:04:00.042 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=1
+2026-06-27 10:04:13.152 INFO  [http-nio-8080-exec-7] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@407269c3, 总数=11, 当前页=1
+2026-06-27 10:04:16.049 INFO  [http-nio-8080-exec-5] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@733054a3, 总数=11, 当前页=1
+2026-06-27 10:04:17.070 INFO  [http-nio-8080-exec-9] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@15bd2653, 总数=11, 当前页=1
+2026-06-27 10:04:17.722 INFO  [http-nio-8080-exec-6] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@2e45333e, 总数=11, 当前页=1
+2026-06-27 10:04:19.361 INFO  [http-nio-8080-exec-1] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@371a04f2, 总数=11, 当前页=1
+2026-06-27 10:05:00.049 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:05:30.563 INFO  [http-nio-8080-exec-7] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@71a38f28, 总数=11, 当前页=1
+2026-06-27 10:06:00.045 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:07:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:08:00.018 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:09:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:10:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:11:00.013 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:12:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:13:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:14:00.018 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:15:00.009 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:16:07.577 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:17:00.018 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:18:00.005 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:19:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:20:00.012 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:21:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:22:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:23:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:24:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 10:24:58.832 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 10:24:58.838 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
