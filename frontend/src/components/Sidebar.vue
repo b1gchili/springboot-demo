@@ -21,6 +21,10 @@
         <i class="el-icon-user"></i>
         <span slot="title">用户列表</span>
       </el-menu-item>
+      <el-menu-item index="/points">
+        <i class="el-icon-coin"></i>
+        <span slot="title">我的积分</span>
+      </el-menu-item>
       <el-menu-item index="/login-logs">
         <i class="el-icon-document"></i>
         <span slot="title">登录日志</span>

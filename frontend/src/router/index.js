@@ -5,6 +5,7 @@ import StudentQuery from '@/views/StudentQuery.vue'
 import StudentForm from '@/views/StudentForm.vue'
 import UserList from '@/views/UserList.vue'
 import LoginLogList from '@/views/LoginLogList.vue'
+import PointsIndex from '@/views/PointsIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,12 @@ const routes = [
     name: 'UserList',
     component: UserList,
     meta: { title: '用户列表', requiresAuth: true }
+  },
+  {
+    path: '/points',
+    name: 'PointsIndex',
+    component: PointsIndex,
+    meta: { title: '我的积分', requiresAuth: true }
   },
   {
     path: '/login-logs',

@@ -68,3 +68,27 @@
 2026-06-27 12:22:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
 2026-06-27 12:22:00.494 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-27 12:22:00.501 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 13:56:23.296 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 13:56:23.298 INFO  [main] o.example.student.StudentApplication - Starting StudentApplication using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 2860 (D:\javacode\springboot-fullstack-demo\backend\target\classes started by 张佳宁 in D:\javacode\springboot-fullstack-demo)
+2026-06-27 13:56:23.299 INFO  [main] o.example.student.StudentApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 13:56:24.228 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-27 13:56:24.229 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-27 13:56:24.229 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-06-27 13:56:24.394 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-27 13:56:25.473 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-27 13:56:25.496 INFO  [main] o.example.student.StudentApplication - Started StudentApplication in 2.615 seconds (JVM running for 3.615)
+2026-06-27 13:57:00.034 INFO  [scheduling-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 13:57:00.159 INFO  [scheduling-1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 13:57:00.180 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 13:58:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 13:59:00.011 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:00:00.008 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:01:00.007 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:01:41.451 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-27 14:01:42.138 INFO  [http-nio-8080-exec-2] o.e.student.service.StudentService - 查询学生列表: 条件=org.example.student.model.StudentQueryRequest@3100f9a4, 总数=11, 当前页=1
+2026-06-27 14:01:43.620 INFO  [http-nio-8080-exec-3] o.e.s.s.PointsAccountServiceImpl - 创建用户积分账户: userId=1
+2026-06-27 14:01:49.033 INFO  [http-nio-8080-exec-5] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=1, pointsChange=10, before=0, after=10
+2026-06-27 14:02:00.016 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2
+2026-06-27 14:02:08.722 WARN  [http-nio-8080-exec-2] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:02:10.588 WARN  [http-nio-8080-exec-4] o.e.s.e.GlobalExceptionHandler - 业务异常: code=400, message=今日已签到
+2026-06-27 14:03:00.015 INFO  [scheduling-1] o.e.student.task.LoginCountStatTask - 用户登录次数统计完成，更新用户数=2

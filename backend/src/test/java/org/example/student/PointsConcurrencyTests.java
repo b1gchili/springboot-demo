@@ -62,11 +62,11 @@ public class PointsConcurrencyTests {
         upsertTaskConfig("TEST_REPEAT_TASK", "测试可重复任务", 40, 1);
     }
 
-//    @AfterEach
-//    void tearDown() {
-//        // 用例执行结束后再次清理，避免测试数据残留到开发库。
-//        cleanTestData();
-//    }
+    @AfterEach
+    void tearDown() {
+        // 用例执行结束后再次清理，避免测试数据残留到开发库。
+        cleanTestData();
+    }
 
     @Test
     void sameUserConcurrentSignInOnlyRewardsOnce() throws Exception {

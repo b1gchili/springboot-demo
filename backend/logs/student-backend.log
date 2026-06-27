@@ -248,3 +248,23 @@
 2026-06-27 13:37:30.427 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2026-06-27 13:37:30.593 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-27 13:37:30.605 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 13:46:37.293 INFO  [main] o.e.student.PointsConcurrencyTests - Starting PointsConcurrencyTests using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 23164 (started by 张佳宁 in D:\javacode\springboot-fullstack-demo\backend)
+2026-06-27 13:46:37.294 INFO  [main] o.e.student.PointsConcurrencyTests - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 13:46:37.300 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 13:46:40.267 INFO  [main] o.e.student.PointsConcurrencyTests - Started PointsConcurrencyTests in 3.316 seconds (JVM running for 4.461)
+2026-06-27 13:46:40.556 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 13:46:40.713 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 13:46:40.850 INFO  [pool-1-thread-18] o.e.s.s.PointsAccountServiceImpl - 创建用户积分账户: userId=9900001
+2026-06-27 13:46:40.855 INFO  [pool-1-thread-18] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=9900001, pointsChange=10, before=0, after=10
+2026-06-27 13:46:40.940 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 13:46:40.949 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-27 13:48:30.406 INFO  [main] o.e.student.PointsConcurrencyTests - Starting PointsConcurrencyTests using Java 1.8.0_171 on LAPTOP-FSOIOSGL with PID 11248 (started by 张佳宁 in D:\javacode\springboot-fullstack-demo\backend)
+2026-06-27 13:48:30.407 INFO  [main] o.e.student.PointsConcurrencyTests - No active profile set, falling back to 1 default profile: "default"
+2026-06-27 13:48:30.418 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-06-27 13:48:33.730 INFO  [main] o.e.student.PointsConcurrencyTests - Started PointsConcurrencyTests in 3.757 seconds (JVM running for 4.911)
+2026-06-27 13:48:33.987 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-27 13:48:34.146 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-27 13:48:34.305 INFO  [pool-1-thread-12] o.e.s.s.PointsAccountServiceImpl - 创建用户积分账户: userId=9900001
+2026-06-27 13:48:34.315 INFO  [pool-1-thread-12] o.e.s.s.PointsAccountServiceImpl - 积分变更成功: userId=9900001, pointsChange=10, before=0, after=10
+2026-06-27 13:48:34.418 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-27 13:48:34.429 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
