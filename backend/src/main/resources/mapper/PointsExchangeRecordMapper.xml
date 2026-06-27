@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.PointsExchangeRecordMapper">
+
+    <resultMap id="PointsExchangeRecordResultMap" type="org.example.student.model.PointsExchangeRecord">
+        <id property="id" column="id"/>
+        <result property="exchangeNo" column="exchange_no"/>
+        <result property="requestNo" column="request_no"/>
+        <result property="userId" column="user_id"/>
+        <result property="templateCode" column="template_code"/>
+        <result property="couponNo" column="coupon_no"/>
+        <result property="usedPoints" column="used_points"/>
+        <result property="exchangeStatus" column="exchange_status"/>
+        <result property="failReason" column="fail_reason"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="PointsExchangeRecordColumns">
+        id, exchange_no, request_no, user_id, template_code, coupon_no,
+        used_points, exchange_status, fail_reason, create_time, update_time
+    </sql>
+
+    <select id="findByUserIdAndRequestNo" resultMap="PointsExchangeRecordResultMap">
+        SELECT <include refid="PointsExchangeRecordColumns"/>
+        FROM points_exchange_record
+        WHERE user_id = #{userId}
+          AND request_no = #{requestNo}
+    </select>
+
+    <insert id="insertExchangeRecord" parameterType="org.example.student.model.PointsExchangeRecord"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO points_exchange_record (
+            exchange_no, request_no, user_id, template_code, coupon_no,
+            used_points, exchange_status, fail_reason, create_time, update_time
+        ) VALUES (
+            #{exchangeNo}, #{requestNo}, #{userId}, #{templateCode}, #{couponNo},
+            #{usedPoints}, #{exchangeStatus}, #{failReason}, NOW(), NOW()
+        )
+    </insert>
+
+</mapper>

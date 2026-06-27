@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.CouponTemplateMapper">
+
+    <resultMap id="CouponTemplateResultMap" type="org.example.student.model.CouponTemplate">
+        <id property="id" column="id"/>
+        <result property="templateCode" column="template_code"/>
+        <result property="templateName" column="template_name"/>
+        <result property="couponType" column="coupon_type"/>
+        <result property="faceValue" column="face_value"/>
+        <result property="thresholdAmount" column="threshold_amount"/>
+        <result property="exchangePoints" column="exchange_points"/>
+        <result property="stock" column="stock"/>
+        <result property="totalStock" column="total_stock"/>
+        <result property="validDays" column="valid_days"/>
+        <result property="enabled" column="enabled"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <resultMap id="CouponExchangeItemResultMap" type="org.example.student.model.CouponExchangeItemVO">
+        <id property="couponTemplateId" column="id"/>
+        <result property="templateCode" column="template_code"/>
+        <result property="templateName" column="template_name"/>
+        <result property="couponType" column="coupon_type"/>
+        <result property="faceValue" column="face_value"/>
+        <result property="thresholdAmount" column="threshold_amount"/>
+        <result property="exchangePoints" column="exchange_points"/>
+        <result property="stock" column="stock"/>
+        <result property="validDays" column="valid_days"/>
+    </resultMap>
+
+    <sql id="CouponTemplateColumns">
+        id, template_code, template_name, coupon_type, face_value, threshold_amount,
+        exchange_points, stock, total_stock, valid_days, enabled, create_time, update_time
+    </sql>
+
+    <select id="listExchangeableCoupons" resultMap="CouponExchangeItemResultMap">
+        SELECT id, template_code, template_name, coupon_type, face_value, threshold_amount,
+               exchange_points, stock, valid_days
+        FROM coupon_template
+        WHERE enabled = 1
+          AND stock > 0
+        ORDER BY exchange_points ASC, id ASC
+    </select>
+
+    <select id="findCouponTemplateById" resultMap="CouponTemplateResultMap">
+        SELECT <include refid="CouponTemplateColumns"/>
+        FROM coupon_template
+        WHERE id = #{id}
+    </select>
+
+    <update id="deductStock">
+        UPDATE coupon_template
+        SET stock = stock - 1,
+            update_time = NOW()
+        WHERE id = #{couponTemplateId}
+          AND stock > 0
+          AND enabled = 1
+    </update>
+
+</mapper>

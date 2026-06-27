@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.UserPointsMapper">
+
+    <resultMap id="UserPointsResultMap" type="org.example.student.model.UserPoints">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="availablePoints" column="available_points"/>
+        <result property="totalEarnedPoints" column="total_earned_points"/>
+        <result property="totalUsedPoints" column="total_used_points"/>
+        <result property="version" column="version"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <resultMap id="PointsRankingResultMap" type="org.example.student.model.PointsRankingVO">
+        <result property="ranking" column="ranking"/>
+        <result property="userId" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="displayName" column="display_name"/>
+        <result property="availablePoints" column="available_points"/>
+        <result property="totalEarnedPoints" column="total_earned_points"/>
+    </resultMap>
+
+    <sql id="UserPointsColumns">
+        id, user_id, available_points, total_earned_points, total_used_points, version, create_time, update_time
+    </sql>
+
+    <select id="findByUserId" resultMap="UserPointsResultMap">
+        SELECT <include refid="UserPointsColumns"/>
+        FROM user_points
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertUserPoints" parameterType="org.example.student.model.UserPoints"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_points (
+            user_id, available_points, total_earned_points, total_used_points, version, create_time, update_time
+        ) VALUES (
+            #{userId}, #{availablePoints}, #{totalEarnedPoints}, #{totalUsedPoints}, #{version}, NOW(), NOW()
+        )
+    </insert>
+
+    <update id="updatePointsWithVersion">
+        UPDATE user_points
+        SET available_points = available_points + #{pointsChange},
+            total_earned_points = total_earned_points + #{incomeDelta},
+            total_used_points = total_used_points + #{usedDelta},
+            version = version + 1,
+            update_time = NOW()
+        WHERE user_id = #{userId}
+          AND version = #{version}
+          AND available_points + #{pointsChange} >= 0
+    </update>
+
+    <select id="listRanking" resultMap="PointsRankingResultMap">
+        SELECT
+            @rank_num := @rank_num + 1 AS ranking,
+            sorted.user_id,
+            sorted.username,
+            sorted.display_name,
+            sorted.available_points,
+            sorted.total_earned_points
+        FROM (
+            SELECT
+                up.user_id,
+                su.username,
+                su.display_name,
+                up.available_points,
+                up.total_earned_points
+            FROM user_points up
+            LEFT JOIN sys_user su ON up.user_id = su.user_id
+            ORDER BY up.total_earned_points DESC, up.update_time ASC
+        ) sorted
+        CROSS JOIN (SELECT @rank_num := 0) r
+    </select>
+
+    <select id="findMyRanking" resultMap="PointsRankingResultMap">
+        SELECT
+            ranked.ranking,
+            ranked.user_id,
+            ranked.username,
+            ranked.display_name,
+            ranked.available_points,
+            ranked.total_earned_points
+        FROM (
+            SELECT
+                @rank_num := @rank_num + 1 AS ranking,
+                sorted.user_id,
+                sorted.username,
+                sorted.display_name,
+                sorted.available_points,
+                sorted.total_earned_points
+            FROM (
+                SELECT
+                    up_inner.user_id,
+                    su_inner.username,
+                    su_inner.display_name,
+                    up_inner.available_points,
+                    up_inner.total_earned_points,
+                    up_inner.update_time
+                FROM user_points up_inner
+                LEFT JOIN sys_user su_inner ON up_inner.user_id = su_inner.user_id
+                ORDER BY up_inner.total_earned_points DESC, up_inner.update_time ASC
+            ) sorted
+            CROSS JOIN (SELECT @rank_num := 0) r
+        ) ranked
+        WHERE ranked.user_id = #{userId}
+    </select>
+
+</mapper>

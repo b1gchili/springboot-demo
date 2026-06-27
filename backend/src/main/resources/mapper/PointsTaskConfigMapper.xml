@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.PointsTaskConfigMapper">
+
+    <resultMap id="PointsTaskConfigResultMap" type="org.example.student.model.PointsTaskConfig">
+        <id property="id" column="id"/>
+        <result property="taskCode" column="task_code"/>
+        <result property="taskName" column="task_name"/>
+        <result property="rewardPoints" column="reward_points"/>
+        <result property="rewardLimitType" column="reward_limit_type"/>
+        <result property="dailyLimit" column="daily_limit"/>
+        <result property="enabled" column="enabled"/>
+        <result property="description" column="description"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="PointsTaskConfigColumns">
+        id, task_code, task_name, reward_points, reward_limit_type,
+        daily_limit, enabled, description, create_time, update_time
+    </sql>
+
+    <select id="findByTaskCode" resultMap="PointsTaskConfigResultMap">
+        SELECT <include refid="PointsTaskConfigColumns"/>
+        FROM points_task_config
+        WHERE task_code = #{taskCode}
+          AND enabled = 1
+    </select>
+
+</mapper>

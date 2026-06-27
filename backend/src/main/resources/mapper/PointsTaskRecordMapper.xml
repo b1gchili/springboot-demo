@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.student.mapper.PointsTaskRecordMapper">
+
+    <resultMap id="PointsTaskRecordResultMap" type="org.example.student.model.PointsTaskRecord">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="taskCode" column="task_code"/>
+        <result property="bizId" column="biz_id"/>
+        <result property="rewardPoints" column="reward_points"/>
+        <result property="rewardStatus" column="reward_status"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <sql id="PointsTaskRecordColumns">
+        id, user_id, task_code, biz_id, reward_points, reward_status, create_time
+    </sql>
+
+    <insert id="insertTaskRecord" parameterType="org.example.student.model.PointsTaskRecord"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO points_task_record (
+            user_id, task_code, biz_id, reward_points, reward_status, create_time
+        ) VALUES (
+            #{userId}, #{taskCode}, #{bizId}, #{rewardPoints}, #{rewardStatus}, NOW()
+        )
+    </insert>
+
+    <select id="findByUserIdAndTaskCodeAndBizId" resultMap="PointsTaskRecordResultMap">
+        SELECT <include refid="PointsTaskRecordColumns"/>
+        FROM points_task_record
+        WHERE user_id = #{userId}
+          AND task_code = #{taskCode}
+          AND biz_id = #{bizId}
+    </select>
+
+</mapper>
